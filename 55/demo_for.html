@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	 // 문제) 키보드로 부터 숫자를 받아 1부터 해당 숫자까지의 합을 출력 
+	// 숫자는 2이상의 양의 정수만 입력한다.
+	var su = 2 //prompt("2이상 양의 정수만 입력하세요.");
+	var s = 0;
+	for(var a = 1; a <= su; a++){
+		s += a;
+	}
+	document.write("합은" + s);
+
+	//문제2) 1 ~ 100 사이의 숫자 중 3의 배수의 합과 갯수 출력
+	var w = 0;
+	var e = 0;
+	for(var q = 1; q <= 100; q++){
+		if(q%3===0){
+			w+=q;
+			e++;
+		}	
+	}document.write("<br> 합은 " + w + "갯수" + e +" ");
+	//문제3) 1 ~ 100 사이의 숫자 중 2의 배수이나 5의 배수가 아닌 수의 합과 갯수 출력
+	var z = 0;
+	var x = 0;
+	for(var c = 1; c <= 100; c++){
+		if((c%2==0)&&(c%5!==0)){
+			z+=c;
+			x++;
+		}
+	}document.write("<br> 합은 " + z + "갯수" + x +" ");
+</script>
+
+</body>
+</html>

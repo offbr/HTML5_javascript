@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script charset="utf-8">
+ window.onload = function(){
+   document.getElementById("android").onmousemove = function(){
+            console.log(event.clientX + " " + event.clientY); //페이지텍스트 기준
+         }
+  drawAndroid();
+  heart();
+ }
+ 
+  function drawAndroid() {
+   //몸통그리기
+   canvas = document.getElementById("android");
+   context = canvas.getContext("2d");
+   context.fillStyle="rgb(0,200,0)";
+   context.fillRect(50, 95, 100, 130);  //x, y, width, height
+   //다리
+   context.fillRect(70, 225, 20, 20);
+   context.fillRect(110, 225, 20, 20);
+   context.beginPath();
+   context.arc(80, 245, 10, 0, Math.PI, false);
+   context.arc(120, 245, 10, 0, Math.PI, false);
+   context.fill();
+   context.closePath();
+   //머리
+   context.beginPath();
+   context.arc(100, 80, 50, 0, Math.PI, true); //x, y, radius, start_angle, end_angle, direction
+   context.fill();
+   context.closePath();
+   context.fillRect(50, 80, 100, 10);
+   //눈
+   context.fillStyle="rgb(255,255,255)";
+   context.beginPath();
+   context.arc(80, 60, 5, 0, 2 * Math.PI, true); //x, y, radius, start_angle, end_angle, direction
+   context.arc(120, 60, 5, 0, 2 * Math.PI, true);
+   context.fill();
+   context.closePath();  
+   //팔
+   context.fillStyle="rgb(0, 200, 0)";
+   context.beginPath();
+   context.arc(35, 110, 10, 0, Math.PI, true);
+   context.arc(165, 110, 10, 0, Math.PI, true);
+   context.fill();
+   context.closePath();
+   context.fillRect(25, 110, 20, 80);
+   context.fillRect(155, 110, 20, 80);
+   context.beginPath();
+   context.arc(35, 190, 10, 0, Math.PI, false);
+   context.arc(165, 190, 10, 0, Math.PI, false);
+   context.fill();
+   context.closePath();
+   //더듬이1
+   context.beginPath();
+   context.strokeStyle = "rgb(0, 200, 0)";
+   context.lineWidth = 3;
+   context.moveTo(74, 38); 
+   context.lineTo(60, 10);
+   context.stroke();
+   context.closePath();
+   //더듬이2
+   context.beginPath();
+   context.strokeStyle = "rgb(0, 200, 0)";
+   context.lineWidth = 3;
+   context.moveTo(124, 38); 
+   context.lineTo(138, 10);
+   context.stroke();
+   context.closePath(); 
+  }
+  
+  function heart() {
+   clearheart();
+   drawAndroid();
+   
+   context.fillStyle="rgb(200, 0, 0)";
+   context.beginPath();
+   context.arc(115, 120, 10, 0, Math.PI, true);
+   context.arc(135, 120, 10, 0, Math.PI, true);
+   context.strokeStyle = "rgb(200, 0, 0)";
+   context.fillStyle="rgb(200, 0, 0)";
+   context.lineWidth = 1;
+   context.moveTo(110, 120);
+   context.lineTo(145, 120);
+   context.lineTo(125, 135);
+   context.lineTo(105, 120);
+   context.fill();
+   context.stroke();
+   
+   setTimeout(heart2, 700);
+  }
+  
+  function heart2() {
+   clearheart();
+   drawAndroid();
+   //심장
+   context.fillStyle="rgb(200, 0, 0)";
+   context.beginPath();
+   context.arc(120, 120, 5, 0, Math.PI, true);
+   context.arc(130, 120, 5, 0, Math.PI, true);
+   context.strokeStyle = "rgb(200, 0, 0)";
+   context.fillStyle="rgb(200, 0, 0)";
+   context.lineWidth = 1;
+   context.moveTo(115, 120);
+   context.lineTo(135, 120);
+   context.lineTo(125, 130);
+   context.lineTo(115, 120);
+   context.fill();
+   context.stroke();
+   
+   setTimeout(heart, 700);
+  }
+  
+  function clearheart(){
+   context.clearRect(0,0,200,270);
+  }
+</script>
+</head>
+<body>
+<canvas id="android" width="200" height="270" style="background:yellow"></canvas>
+</body>
+</html>

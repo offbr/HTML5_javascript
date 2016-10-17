@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>media</title>
+	<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById("btn1").onclick = toggleMusic;
+		document.getElementById("btn2").onclick = startMusic;
+		document.getElementById("btn3").onclick = fastMusic;
+		document.getElementById("btn4").onclick = pMusic;
+
+		document.getElementById("myVideo").ontimeupdate = dispTime; //eventfunction
+	}			
+// music ===================================================
+	var music;
+	function toggleMusic(){
+		music = document.getElementById("myMusic");
+
+		if(music.paused){
+			music.play();
+			document.getElementById("btn1").innerText = "일시정지";
+			console.log(music.currentTime); // 재생 시간
+		}else{
+			music.pause();
+			document.getElementById("btn1").innerText = "음악재생";
+		}
+	}
+
+	function startMusic(){
+		music.currentTime = 0; //0부터 시작
+	}
+
+	function fastMusic(){
+		music.currentTime += 2; //2초씩 앞으로 넘김
+	}
+
+	function pMusic(){
+		music.currentTime -= 2; //2초씩 뒤로 넘김
+	}
+// video ===================================================
+	
+	function dispTime(){
+		document.getElementById("t").innerText = this.currentTime; 
+		//this는 > myvideo 현재 이벤트가 발생된 객체를 가리키는 > this
+	}
+
+	</script>
+</head>
+<body>
+미디어 연습 <p>
+<audio controls id="myMusic"><!--autoplay-->
+	<source src="sounds/music.mp3" type="audio/mpeg"> <!--예비순위 확장자-->
+	<source src="sounds/music.ogg" type="audio/ogg">
+	<source src="sounds/music.wav" type="audio/wav">
+</audio>
+<br>
+<button id="btn1">음악재생</button>
+<button id="btn2">|&lt;</button>
+<button id="btn3">&gt;&gt;</button>
+<button id="btn4">&lt;&lt;</button>
+
+<hr>
+<video controls width="500" height="400" id="myVideo">
+	<source src="sounds/one.mp4" type="video/mp4"> <!--브라우저에 따라 예비순위를 둠 -->
+	<source src="sounds/one.ogg" type="video/ogg">
+</video>
+<br>
+<span id="t">0.0</span> 초
+</body>
+</html>

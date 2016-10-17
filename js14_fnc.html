@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>funck</title>
+	<script type="text/javascript">
+		var count = 0; // 변수 지정할떄 범위가 중요
+		function aa(){
+			//var count = 0; // 실행 될때마다 초기화
+			count += 1;
+			//return; //함수의 무조건 탈출
+			document.write(count + "번 수행<br>");
+		}
+		function aa(){
+
+		}
+		function bb(){
+			cc(10); //함수는 함수 호출 가능 (function이 function을 호출 가능)
+			//var result = dd(3, 4);
+			//var result = dd(3);
+			//var result = dd(3, 4, 5);
+			var result = dd("대한", "민국");
+			document.write("<br>반환값:" + result); //js는 리턴값은 하나
+		}
+
+		function cc(arg){ //함수명(parameter...)//argument, 인수, 인자, 
+			document.write("<br>cc 함수 수행");	
+			document.write("<br>arg:" + arg) // a = 10;(치환) 기억장소에 값을 기억시키는 방법 2가지
+			// 치환 / 실인수(예:10),가인수(예:arg) 
+			var kk = arg + 10;
+			document.write("<br>kk:" + kk);
+			//return; 
+		}
+		function dd(a, b){
+			document.write("<br>a:"+ a + ", b:" + b);
+			return a + b; //함수 수행후 결과를 반환 
+		}
+	</script>
+</head>
+<body>
+함수 작성하기 <br>
+<script type="text/javascript">
+	aa();
+	aa();
+	bb();
+	dd();
+</script>
+<hr>
+<script type="text/javascript">
+	bb();
+	
+</script>
+</body>
+</html>

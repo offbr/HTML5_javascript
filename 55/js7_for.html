@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	.c1{background-color: yellow;}
+	</style>
+</head>
+<body>
+for를 이용한 구구단 출력 <br>
+<script type="text/javascript">
+	for(i = 1; i <= 9; i++){
+		document.write("3 * "+ i + " = " + (3 * i) + " ");
+	}
+	su = "a5";
+	document.write("<br>", isNaN(su));
+	//키보드에서 숫자를 입력받아 구구단 출력
+	document.write("<p>");
+	//var dan = prompt("출력할 구구단 숫자를 입력하시오", "2");
+	dan = 2;
+ 	if(isNaN(dan) == true){
+		alert("숫자만 허용!");
+	}else{
+		document.write("<b>" + dan + "</b>단 출력<br>");
+		for(i = 1; i <= 9; i++){
+			document.write(dan + "*" + i + "=" + (dan * i)+ "&nbsp;&nbsp;");
+		}
+	}
+	document.write("<hr>")
+	//문) 2 ~ 9단 까지 출력(table tag 사용 짝수 단의 배경색은 노랑)
+	
+	</script>
+
+	
+
+
+
+
+<hr>
+<table>
+	<tr class="c1"></tr>
+</table>
+<script type="text/javascript">
+	document.write("<table border='1'>");
+	for(i = 2; i <= 9; i++){
+		if(i%2==0){
+		document.write("<tr class='c1'>");
+	}else{
+		document.write("<tr>");
+	}
+	for(j = 1; j <=9; j++){
+		document.write("<td>");
+		document.write(i + "*" + j +" = " + i * j);
+		document.write("</td>");
+	}
+	document.write("</tr>");
+	}
+document.write("</table>");
+</script>
+
+
+
+
+
+
+
+<hr>
+
+<script type="text/javascript">
+	document.write("<table border='1'>");
+	for(i = 2; i <= 9; i++){
+		if (i%2==0){
+			document.write("<tr>"); //(<trclass ="bg">);
+		} else{
+			document.write("<tr>");
+		}
+		for(j = 1; j <=9; j++){
+			document.write("<td>");
+			document.write(i + "*" + j +" = " + i * j);
+			document.write("</td>");
+		} 
+		document.write("</tr>");
+	}
+	document.write("</table>");
+</script>
+
+
+</body>
+</html>

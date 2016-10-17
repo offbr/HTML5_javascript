@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>반복문 for</title>
+</head>
+<body>
+*** for test ***<br>
+<script type="text/javascript">
+	// *누적 
+	k = 1; 
+	k = k + 1;
+	k += 1; //k-=2, k*=2, k/=2, (속도가 빠름/ 권장)
+	++k; //전위 증가 연산자  --k;
+	k++; //후위 증가 연산자  k--; (선호)
+	document.write("k는 " + k + "<br>");
+
+
+	for (var a = 1; a <= 5; a++){ 
+	//초기, 목적, 증가(*누적)
+		document.write("a는 " + a + " ");
+		document.write("안녕 ");
+		// a = 7; for 조건에 변수 값은 증가치에 의해서만 변화시켜라
+	}
+		document.write("<br>for 탈출 후 a는 " + a);
+
+
+	document.write("<br>");
+	for(a = 5; a >= 1; a--){
+		document.write("a는 " + a + " ");
+	}
+	document.write("<br>for 탈출 후 a는 " + a);
+	document.write("<br>");
+	for(a = 3; a <= 10; a += 2){
+		document.write("a는 " + a + " ");
+	}
+	document.write("<br>for 탈출 후 a는 " + a);
+	document.write("<br>");
+	var m = 1.5; n = 5.5;
+	for(a = m + 1; a <= n + 1; a += 0.5){
+		document.write("a는 " + a + " ");
+	}
+	document.write("<br>for 탈출 후 a는 " + a);
+	
+	document.write("<br><br>");
+	
+	//다중 for
+	for(i = 1; i <= 3; i++){ // 1싸이클 i : 1회 j : 4회
+		document.write("<b>i:" + i + "</b>&nbsp;&nbsp;");
+		for(j = 1; j <= 4; j++){
+			document.write("j:" + j + "&nbsp;&nbsp;");
+			
+		}
+	document.write("<br>")
+	}
+
+	document.write("<br><br>");
+	hap = 0; // 중요********** 누적 기억장소는 초기화하자
+	for(su = 1; su <= 10; su++){
+		//hap = 0; for문 안이므로 싸이클 돌때마다 초기화로 결국 값은 10이 됨
+		document.write(su + " ");
+		hap += su;
+	}
+	document.write("<br>합은 " + hap);
+
+	// 문제) 키보드로 부터 숫자를 받아 1부터 해당 숫자까지의 합을 출력 
+	// 숫자는 2이상의 양의 정수만 입력한다.
+	//문제2) 1 ~ 100 사이의 숫자 중 3의 배수의 합과 갯수 출력
+	//문제3) 1 ~ 100 사이의 숫자 중 2의 배수이나 5의 배수가 아닌 수의 합과 갯수 출력
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// 문제) 키보드로 부터 숫자를 받아 1부터 해당 숫자까지의 합을 출력 
+	// 숫자는 2이상의 양의 정수만 입력한다.
+	document.write("<hr>")
+
+	document.write("<br>");
+	var pa = prompt('2 이상 양의 정수를 입력하세요');
+	s = 0;
+	for(a = 1; a <= pa; a++){
+		s += a
+	}
+	document.write("<br>합은 " + s);
+
+
+	//문제2) 1 ~ 100 사이의 숫자 중 3의 배수의 합과 갯수 출력
+
+	document.write("<br>");
+	sum = 0;
+	var i=0;
+	for(var m = 1; m <= 100; m++){
+		if(m%3===0){
+			sum+=m;
+			i++}
+	}
+	document.write("<br>"+sum+"갯수"+i);
+
+	//문제3) 1 ~ 100 사이의 숫자 중 2의 배수이나 5의 배수가 아닌 수의 합과 갯수 출력
+
+	document.write("<br>");
+	su = 0;
+	pu = 0;
+	for (var m = 1; m <= 100; m++){
+		if((m%2===0)&&(m%5!=0)){
+			su+=m;
+			pu++
+		}
+	}
+	document.write("<br>"+su+"갯수"+pu); 
+		
+
+
+		
+
+
+</script>
+
+</body>
+</html>

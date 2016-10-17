@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.a{
+			background-color: red
+		}
+		.b{
+			background-color: blue
+		}
+	</style>
+	<script type="text/javascript">
+	for(i = 0; i <= 4; i++){
+		for(j = 0; j <= i;  j++){
+		document.write("*");		
+		}
+		document.write("<br>");			
+	}
+	document.write("<hr>");			
+
+	for(i = 0; i <= 6; i++){
+		if(i%2===0){
+		document.write("###"+"<br>");
+		}else{
+			document.write("%%%"+"<br>");
+		}
+	}
+	document.write("<hr>");
+
+	for(i = 4; i >= 0; i--){
+		for(j = 0; j <= i;  j++){
+		document.write("*");		
+		}
+	document.write("<br>");		
+	}	
+	</script>
+<script type="text/javascript">
+	function a(){
+		alert("안녕하세요");
+	}
+
+	function b(){
+		d = new Date();
+		d.getDate();
+		d.getHours();
+		alert(d);
+	}
+</script>
+</head>
+<body>
+<p>버튼을 클릭하면"안녕하세요"를 alert로 출력하시오</p>
+<input type="button" value="click" onclick=a();/>
+
+<p>버튼을 클릭하면 날짜/시간을 alert로 출력하시오</p>
+<input type="button" value="click" onclick=b();/>
+
+<script type="text/javascript">
+	//var a = prompt("주민번호 13자리를 입력하세요");
+
+</script>
+
+<input type="button" value="클릭1" class="a"/>
+<input type="button" value="클릭2" class="b"/>
+
+
+
+<script type="text/javascript">
+	for(i = 0; i <= 5; i++){
+		document.write("*");
+		for(j = 1; j <= 8; j++)
+	}
+</script>
+
+</body>
+</html>

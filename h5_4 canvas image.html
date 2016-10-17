@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas</title>
+	<style type="text/css">
+		section ul li{list-style: none; float: left;}
+		img{width: 120px; padding-left: 10px; border: 0px;}
+	</style>
+	<script type="text/javascript">
+		/*
+		window.onload = function(){
+			//alert("good");
+		}
+		*/
+		var canvas=context=image= "";
+
+		window.addEventListener("load", func, false);
+		function func(){
+			//alert("nice");
+			canvas = document.getElementById("my");
+			context = canvas.getContext("2d");
+			image = new Image();
+			image.src = "image/book.png"
+			image.onload = function(){
+				context.drawImage(image, 100, 0, 300, canvas.height);
+			}
+
+			var img1attr = document.getElementById("img1").getAttribute("src"); //img1의 src속성값
+			//alert(img1attr);
+			document.getElementById("img1").onclick = function(){
+				changeImage(img1attr);
+			}
+
+			var img2attr = document.getElementById("img2").getAttribute("src"); //img1의 src속성값
+			//alert(img1attr);
+			document.getElementById("img2").onclick = function(){
+				changeImage(img2attr);
+			}
+
+			var img3attr = document.getElementById("img3").getAttribute("src"); //img1의 src속성값
+			//alert(img1attr);
+			document.getElementById("img3").onclick = function(){
+				changeImage(img3attr);
+			
+		}
+	}
+
+		function changeImage(imgSrc){
+			context.clearRect(0, 0, canvas.width, canvas.height); //전체삭제
+			image.src = imgSrc;
+			context.drawImage(image, 100, 0, 300, canvas.height);
+		}
+	</script>
+</head>
+<body>
+캔버스에 이미지 담기<p>
+<canvas id="my" width="500" height="300" style="border: 1px solid #c3c3c3"></canvas>
+
+<section>
+	<ul> <!--id는 선택대상 class는 css-->
+		<li><img src="image/pic1.png" id="img1"></li>
+		<li><img src="image/pic2.png" id="img2"></li>
+		<li><img src="image/pic3.png" id="img3"></li>
+	</ul>
+</section>
+</body>
+</html>

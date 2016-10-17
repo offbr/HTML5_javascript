@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#fish{
+			position: absolute;
+			left: 0px;
+			top: 200px;
+		}
+		.fishCome{
+			position: absolute;
+			left: 300px;
+			top: 200px;
+		}
+	</style>
+	<script type="text/javascript">
+		var go = 0;
+		var come = 0;
+		count = 0;
+		coun = 0;
+		window.onload = function (){
+			document.getElementById("btn").onclick = function(){
+				//alert("aa");
+				ab();
+			}
+		}
+		function ab(){
+			var fish = document.getElementById("fish");{
+				go += 10;
+				fish.style.left = go + "px";
+				stop = setTimeout("ab()", 20);
+				count++;
+				if(count === 50){
+					clearTimeout(stop);
+					document.getElementById('fish').src = 'image/fish2.png';
+					come -=10;
+					fish.style.left = come + "px";
+					stop = setTimeout("ab()", 20);
+					coun--;
+					if(coun === 10)	
+					clearTimeout(stop)	
+				}
+			}
+		}
+/*
+		function bb(){
+			var fishCome = document.getElementsByClassName("fishCome");{
+				come -=10;
+					fish.style.left = come + "px";
+					stop = setTimeout("bb()", 20);
+					coun++;
+					if(coun === 10)	
+					clearTimeout(stop);	
+			}
+		}
+		*/
+	</script>
+</head>
+<body>
+<br>
+<input type="button" value="Move" id="btn" />
+<p/>
+<img src="image/fish1.png" id="fish" class="fishCome" />
+
+<div id="show"></div>
+</body>
+</html>

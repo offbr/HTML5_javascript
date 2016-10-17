@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>func</title>
+	<script type="text/javascript">
+		a = 10;  // 전역 변수 global variable
+		var b =20; //전역변수
+								//javascript 만의 특징(중요)
+		function func1(){
+			var c = 30; //지역 변수 local variable (function 안에서 var 변수선언할 경우 에만 지역변수) // 우선순위 지역>전역 //가급적이면 지역변수 사용
+			d = 40; //전역변수
+			document.write("<br>a:" + a + ", b:" + b);
+			document.write("<br>c:" + c + ", d:" + d);
+		}
+
+		function func2(){
+			document.write("<br>a:" + a + ", b:" + b);
+			//document.write("<br>c:" + c + ", d:" + d); //c때문에 에러
+			//document.write("<br>e:" + e + ", f:" + f); //에러: 변수 선언 후 사용
+			{
+				e = 50;
+				var f = 60;
+			}
+			document.write("<br>e:" + e + ", f:" + f);
+		}
+	</script>
+</head>
+<body>
+전역, 지역 변수의 이해<br>
+<script type="text/javascript">
+	func1();
+	document.write("<br>");
+	func2();
+	document.write("<br>");
+	document.write("<br>a:" + a + ", b:" + b);
+	//document.write("<br>c:" + c + ", d:" + d);//c때문에 에러
+		
+</script>
+</body>
+</html>

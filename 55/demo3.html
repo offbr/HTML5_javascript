@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!--
+	<script language="JavaScript">
+	var i = 25;
+	var j = 50;
+	
+	i++; j--;  //i는 1증가, j는 1감소
+	document.write( i + " : 증가된 i의 값  <br>" );  //20 출력
+	document.write( (i+=j) + " : i+j를 i에 대입 후 i출력"); //70 출력
+</script>
+-->
+
+<script language="JavaScript">
+	/*
+	var x, y, z, a;
+	x = 7
+	y = prompt("1~9 사이 값을 입력해 주세요");
+	a = "결과 입니다.";
+	z = x * y;
+	
+	document.write( z + " 는 <br>" + x + " 곱하기 " + y  + " 의 " + a );
+	*/
+	var city = new Array(4);
+		city[0] = "서울";
+		city[1] = "대전";
+		city[2] = "대구";
+		city[3] = "부산";
+		
+	var j = city.length;
+	
+	for(i=0; i<j; i++) {
+		document.write( city[i] + "<br>" );
+	}
+	</script>
+
+</body>
+</html>

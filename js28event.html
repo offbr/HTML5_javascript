@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>삼각수</title>
+	<script type="text/javascript">
+		function calc(){
+			//alert("a");
+			if(document.getElementById("txtA").value == ""){
+				alert('숫자를 입력하시오');
+				document.getElementById("txtA").focus(); // 입력커서 되돌림 //사용자배려
+				return;
+			}
+			var b = "";
+			var txtAval = eval(document.getElementById("txtA").value);
+
+			for(var a = 1 ; a <= txtAval; a++){
+				for(var kbs = 1; kbs <= a; kbs++){
+					b += "★"
+				}
+				b += "" + "<br>";
+			}
+			//document.getElementById("box").innerHTML = txtAval + "<br><br>" + txtAval +
+			//" 삼각수=" + (txtAval * (txtAval + 1) / 2) + "<br><br>" + b;
+			//삼각수 공식 tn = n(n+1) / 2
+			document.getElementById("box").innerHTML = "<br><br>" + txtAtAval +
+			" 삼각수=" + (txtAval * (txtAval + 1) / 2) + "<br><br>" + b;
+
+		}
+	</script>
+</head>
+<body>
+<h1>Triangular Number</h1>
+<input type="text" id="txtA" value="2" />
+<input type="button" value="삼각수 작성" onclick="calc()" />
+<br>
+<span id="box" style="font-size: 20px; color: blue">결과 출력</span>
+</body>
+</html>

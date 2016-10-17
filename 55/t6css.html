@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head><!--선언,정의 하는곳-->
+	<meta charset="utf-8">
+	<title>css test</title><!--인터널방식-->
+	<style type="text/css">
+	h1,i{font-size: 50px; font-family: 궁서; color: red;}	
+	
+	.c1{color: orange; font-family: 돋음,궁서,serif, "Times New Roman"}
+	
+	#kbs{color: #00f; font-style: normal;}
+
+	</style><!--폰트가 없을경우 차후로 선택 /단어 중간 공백있을경우 큰따옴표-->
+	<!--external 방식 : 별도작성한 css 호출(현장에서 주로 사용)-->
+	<link rel="stylesheet" type="text/css" href="css/nice.css"> 
+</head>
+<body>
+** CSS 적용하기 **<p/> 
+<!--우선적용순위> 인라인방식(비권장),인터널방식(권장),익스터널방식-->
+<span style="font-size: 30px; color: aqua">인라인 방식</span>사용
+<hr>
+<h1>인터널 방식</h1>
+<h2>안녕하세요</h2>
+<h1>반가워요</h1>
+<i>웹 클라이언트 연습중</i>
+<hr>
+<p class="c1">클래스 사용1</p>
+<b class="c1">클래스 사용2</b>
+<b>일반 자료</b>
+<b class="c2">특수 자료</b>
+<hr>
+<span id="kbs">id 사용1</span>
+<b id="mbc">id 사용2</b>
+<span id="sbs">id 사용3</span>
+<hr>
+<p>입력 양식</p>
+<form>
+	<table>
+		<tr>
+			<td>id : </td>
+			<td><input type="text" name="id" /></td>
+		</tr>
+		<tr>
+			<td>pwd : </td>
+			<td><input type="text" name="id" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="submit" class="btnOk"></input>
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

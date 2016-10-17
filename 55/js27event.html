@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>event</title>
+	<style type="text/css">
+	span{
+		font-size: 20px;
+		background-color: silver;
+	}
+	</style>
+	<script type="text/javascript">
+		var contents = new Array();
+		contents[0] = '네이버 방문 <a href="http://www.naver.com">네이버</a>';
+		contents[1] = '다음 가기 <a href="http://www.daum.net">다음</a> 뭐가 있을까';
+		contents[2] = '방송국 방문 <a href="http://jtbc.joins.com">jtbc</a>';
+
+		var tg;
+		var currentMsg = 0;
+		var count = 0;
+
+		function changeContent(){
+			tg.style.clip = "rect(0px 0px auto 0px)"
+			tg.innerHTML = contents[currentMsg];
+
+			msg();
+		}
+
+		function msg(){
+			if(currentMsg == contents.length - 1){
+				currentMsg = 0;
+			}else{
+				currentMsg += 1; // currentMsg++
+			}
+			//setTimeout("changeContent()", 2000);
+
+			sbs = setTimeout("changeContent()", 2000);
+			count++;
+			if(count == 5) clearTimeout(sbs);
+
+		}
+
+		window.onload = function(){
+			tg = document.getElementById("target");
+			changeContent();
+		}	
+	</script>
+</head>
+<body>
+<span id="target"></span>
+<p>자바 스크립트 연습<p>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>사칙연산</title>
+	<script type="text/javascript">
+
+		function dispCalc(su1, su2, op){
+/*
+			document.write(a = su1 + su2 + op);
+			document.write("<br>");
+			var a = Number(su1) + su2 + Number(op)
+			document.write(a);
+			document.write("<br>");
+			document.write(Number(su1), su2, Number(op));
+			document.write("<br>");
+			document.write(su1 + su2 + op);
+			document.write("<br>");
+			document.write(su1, Number(su2), op);
+			document.write("<br>");
+			document.write(su1 + Number(su2) + op);
+			document.write("<br>");
+			document.write(eval(su1+ su2 +op));
+			document.write("<br>");
+			document.write(Number(su1)+eval('su2')+Number(op));
+			document.write("<hr>");
+	
+			var i = 0;
+			var u = Number(su1) + su2 + Number(op)
+			switch(i+u){
+				case + :
+				document.write(i);
+				break;
+			}
+			document.write("<hr>");
+			
+			var p = 0;
+			switch(p = su1 + su2 + op){
+				case 0 :
+				document.write("p");
+				break;
+			}
+			document.write("<hr>");
+			
+			var i = 0;
+			var u = Number(su1) + su2 + Number(op)
+				if(i + u){
+					document.write(u);
+				}
+			document.write("<hr>");
+			
+			var u = Number(su1) + su2 + Number(op)
+				if(u){
+					document.write(u);
+				}
+*/
+
+			document.write("<hr>");
+
+			var y = 0;
+			var u = Number(su1);
+			var o = Number(op);
+			switch(su2){
+				case "+":
+					y = u + o ;
+				break;
+				case "-":
+					y = u - o
+				break;
+				case "*":
+					y = u * o
+				break;
+				case "/":
+					y = u / o
+				break;
+			}
+			document.write(y);
+
+			document.write("<hr>");
+
+			var y = 0;
+			var u = Number(su1);
+			var i = su2;
+			var o = Number(op);
+			if(i == "+"){
+				y = u + o
+				document.write(y);
+			}if(i == "-"){
+				y = u - o
+				document.write(y);
+			}if(i == "*"){
+				y = u * o
+				document.write(y);
+			}if(i == "/"){
+				y = u / o
+				document.write(y);
+			}
+
+			document.write("<hr>");
+
+/*
+			var u = Number(su1);
+			var o = Number(op);
+			var result = 0;
+			switch(su2){
+				case "+":
+					result = u + o ;
+				break;
+				case "-":
+					result = u - o
+				break;
+				case "*":
+					result = u * o
+				break;
+				case "/":
+					result = u / o
+				break;
+			}	
+				return result;
+
+			document.write("<hr>");
+
+			//연산결과를 출력
+*/
+	}
+	</script>
+
+</head>
+<body>
+문자열 자르기 연습(split)<br>
+<script type="text/javascript">
+	var str = "개, 고양이, 악어";
+	document.write(str);
+
+	document.write("<br>");
+	var arr = [];
+	arr = str.split(',');
+	document.write(arr[0] + " " + arr[1] + " " + arr[2]);
+	
+	document.write("<br>");
+
+	for(i = 0; i < arr.length; i++){
+	document.write(arr[i] + " ");
+	}
+	document.write("<br>");
+	for(i in arr){
+		document.write(arr[i] + " ");
+	}
+</script>
+<hr>
+문제) 키보드로 부터 두수와 연산자를 입력받는다. (prompt 함수 이용)
+<br> 예) "5 + 6"
+dispCalc 함수를 호출한 후 그 연산 결과를 출력하라.
+<hr>
+<script type="text/javascript">
+	var s = prompt("두수와 연산자를 입력하시오")
+	//document.write(s + " ");
+	var a = [];
+	a = s.split(' ');
+	//document.write(a[0] + " " + a[1] + " " + a[2]);
+	dispCalc(a[0], a[1], a[2]);
+	//document.write(dispCalc(a[0], a[1], a[2])); 리턴값 
+
+</script>
+</body>
+</html>

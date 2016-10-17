@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>이벤트</title>
+	<script type="text/javascript">
+		function func(){
+			alert("성공");
+		}
+
+		function func2(){
+			//var data = "2016-5-16";
+			var data = prompt("날짜 입력", "2016-5-16");
+			alert(data);
+		}
+	</script>
+</head>
+<body>
+
+	<p>이벤트 (일반 사용자가 뭔가를 기대하며 사건을 발생) 연습</p>
+	<a href="http://www.naver.com"><button>네이버</button></a><br> <!--내부적으론 javascript-->
+	<a href="http://www.naver.com">네이버</a><hr>
+	<a href="javascript:func()">이벤트 처리1</a><br>
+	<a href="javascript:;" ondblclick="func2();">이벤트 처리2</a><br>
+
+	<button onclick="func2();">이벤트 처리3</button><br>
+	<input type="button" onclick="func2();" value="이벤트 처리4"></input> <!--form tag안에서 주로 씀-->
+
+
+</body>
+</html>

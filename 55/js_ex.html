@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#saram{
+			position: absolute;
+			left: 0px;
+			top: 100px;
+		}
+	</style>
+	<script type="text/javascript">
+		var saram1 = new Array("image/saram/saram1.png",
+					"image/saram/saram2.png","image/saram/saram3.png", 
+					"image/saram/saram4.png", "image/saram/saram5.png",
+					"image/saram/saram6.png",
+					 "image/saram/saram7.png", "image/saram/saram8.png",
+					 "image/saram/saram9.png", "image/saram/saram10.png");
+		var saram2 = new Array();
+		
+		var go = 0; //이미지순서
+		var come = 0; // 픽셀 이동 값
+		var count = 0;
+
+		window.onload = function(){
+			document.getElementById("btn1").onclick = move;
+			document.getElementById("btn2").onclick = function bb(){
+				clearTimeout(stop)
+			}
+		}
+		function move(){
+			var human = document.getElementById("saram");
+				document.people.src = saram1[go];
+				count++;
+				go++;
+
+				if(count == 6){
+					come += 10;
+					if(go == 5){
+						go = 0;
+					}
+				}else{
+					come -= 10;
+					if(count == 6){
+						go = 5 
+					}	
+				}
+				human.style.left = come + "px";
+				stop = setTimeout("move()", 500);		
+		}
+	</script>
+</head>
+<body>
+<p/>
+<input type="button" value="move" id="btn1" />
+<input type="button" value="stop" id="btn2" />
+<br>
+<img src="image/saram/saram1.png" id="saram" name="people" />
+	
+</body>
+</html>

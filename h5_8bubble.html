@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>canvas</title>
+<script type="text/javascript">
+var context
+var backImg, bubbleImg; //배경이미지 //버블이미지
+var bubbleX = 150, bubbleY = 150;
+var targetX, targetY; //마우스 좌표값
+var bubbles = new Array();
+var eventX, eventY; //좌표값
+var imageIndex = 0; //이미지 순서값
+var count = 0; // 카운트값
+window.onload = function(){
+	canvas = document.getElementById("myCanvas");	
+	context = canvas.getContext("2d");
+
+	backImg = new Image();
+	backImg.src = "images/lighthouse.jpg";
+
+	var bubbleImg0 = new Image();
+	bubbleImg0.src = "images/b0.png";	
+	var bubbleImg1 = new Image();
+	bubbleImg1.src = "images/b1.png";
+	var bubbleImg2 = new Image();
+	bubbleImg2.src = "images/b2.png";
+	var bubbleImg3 = new Image();
+	bubbleImg3.src = "images/b3.png";
+	var bubbleImg4 = new Image();
+	bubbleImg4.src = "images/b4.png";
+	var bubbleImg5 = new Image();
+	bubbleImg5.src = "images/b5.png";
+	
+	bubbles = [bubbleImg0, bubbleImg1, bubbleImg2, bubbleImg3, 
+		bubbleImg4, bubbleImg5];
+
+	setTimeout(gogo, 1000);
+
+	document.body.onmousemove = moveBubble;
+	document.getElementById("myCanvas").addEventListener("click", playSound, false);
+	//.onclick
+}
+
+function gogo(){
+	setInterval(drawCanvas, 10); // 1 / 100초 마다 함수 호출;
+}
+
+function drawCanvas(){ //일반 함수 //배경이미지생성 //버블생성
+	context.drawImage(backImg, 0, 0, 500, 300);
+	context.drawImage(bubbles[imageIndex], bubbleX - 25, bubbleY - 25, 50, 50);
+	
+	moveToTarget();
+	count++; //카운트값 증가
+	if(count % 20 == 0){ // 카운트값이 20의 배수일때만 이미지값을 증가
+		imageIndex++;
+		if(imageIndex == 6) imageIndex = 0; //이미지증가 값이 6이 되면 0으로 리셋
+	}
+}
+
+function moveBubble(e){ //이벤트 함수 //버블 좌표값
+	//console.log(e.target.nodeName); //DIV, CANVAS 대문자로 리턴됨
+	if(e.target.nodeName != "CANVAS") return;  //nodeName이 CANVAS가 아닐경우 값을 안받음
+	eventX = e.offsetX;
+	eventY = e.offsetY;
+	dispFunc("마우스 위치는 x: " + eventX + " y: " + eventY);
+
+	targetX = eventX;
+	targetY = eventY;
+}
+
+function dispFunc(msg){ //dispXy에 마우스위치에 따른 좌표값을 표시
+	document.getElementById("dispXy").innerHTML = msg;
+}
+
+function moveToTarget(){ // target(마우스 포인터)으로 풍선 이동
+	var deltaX = targetX - bubbleX;
+	var deltaY = targetY - bubbleY;
+	//cellX = deltaX;
+	//cellY = deltaY;
+
+	cellX = deltaX / 100.0;
+	cellY = deltaY / 100.0;
+
+	bubbleX += cellX;
+	bubbleY += cellY;
+	console.log(deltaX + " " + deltaY + ", " + cellX + " " + cellY);
+}
+
+function playSound(){
+	s = document.getElementById("sound");
+	s.play();
+
+	if(eventX >= 350 && eventX <= 390 &&
+		eventY >= 40 && eventY <= 60){
+		backImg.src = "images/lighthouse2.jpg";
+	}else{
+		backImg.src = "images/lighthouse.jpg";
+	}
+}
+</script>
+</head>
+<body>
+<div>
+	<canvas id="myCanvas" width="500" height="300"></canvas>
+</div>
+<div id="dispXy"></div>
+<audio src="sounds/laugh.wav" id="sound"></audio>
+</body>
+</html>

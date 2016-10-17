@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>게임</title>
+	<script type="text/javascript">
+		function dispInfo(){
+			document.write("<hr>보물이 가득한 나라로 모험을 떠나자");
+			document.write("<br>마지막 관문인 동물만 통과하면 된다.");
+			document.write("<br>동굴 속에는 용 두 마리가 살고 있다.");
+			document.write("<br>순한 용과 포악한 용이 있다.");
+			document.write("<br>동굴 입구는 2군데이고 번호를 선택하면 된다.");
+			document.write("<br>죽느냐 떼부자가 되느냐 ㅠㅠ. <br>출발하자");
+		}
+//문자열과 숫자열 주의
+		function chooseCave(){
+			var cave = "";
+			while(cave !== "1" && cave !== "2"){
+				cave = prompt("동굴 번호를 선택하시오 (1 or 2)");
+			}
+			return cave;
+		}
+
+		function checkCave(caveNumber){
+			document.write("<br>동굴에 도착...");
+			document.write("<br>어둡고 으시시한데...");
+
+			randNum = randomRange(1, 2);
+			//console.log(randNum);
+
+			if(caveNumber == randNum){ // == 형변환 됨 // === 형변환 안됨
+				document.write("<br>와우! 착한 용을 만났네요");
+			}else{
+				document.write("<br>으악!");
+			}
+		}
+
+		function randomRange(n1, n2){
+			//console.log("두 수를 이용해 난수 발생", n2 - n1 + 1);
+			console.log("두 수를 이용해 난수 발생", (Math.random() *(n2 - n1 + 1)) + n1);
+			console.log(Math.floor())
+			return Math.floor((Math.random() *(n2 - n1 + 1)) + n1);
+		}
+	</script>
+</head>
+<body>
+죽기 아니면 살기 게임<br>
+<script type="text/javascript">
+	while(true){
+		dispInfo();
+		var caveNumber = chooseCave();
+		//console.log(caveNumber);
+		checkCave(caveNumber);
+
+		var playAgain = prompt("계속할까요?(y or n)");
+		if(playAgain !== "y"){
+			document.write("<br>잘가");
+			break;
+		}
+	}
+</script>
+</body>
+</html>

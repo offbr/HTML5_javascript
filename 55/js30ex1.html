@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>event</title>
+	<style type="text/css">
+	#fish{
+		position: absolute;
+		left: 0px;
+		top: 100px;
+	}
+	</style>
+
+	<script type="text/javascript" >
+	var point=0;
+	var count=0;
+	
+	window.onload=function(){
+		var fish = document.getElementById("fish");
+
+		document.getElementById("btn1").onclick = move;
+
+		document.getElementById("btn2").onclick = function(){
+			clearTimeout(sbs);
+		}
+	}
+
+	function move(){
+		count++;
+		console.log(count);
+		if(count % 100 < 50) {
+			document.getElementById("fish").innerHTML="<img src='image/fish1.png'>";
+			point += 10;
+		} else { 
+			document.getElementById("fish").innerHTML="<img src='image/fish2.png'>";
+			point -= 10;
+		}
+
+		fish.style.left = point + "px";
+		sbs = setTimeout("move()", 50);
+	}
+</script>
+</head>
+<body>
+<input type="button" value="이동" id="btn1"></input>
+<input type="button" value="정지" id="btn2"></input>
+<p/>
+<span id="fish"><img src="image/fish1.png"></span>
+</body>
+</html>

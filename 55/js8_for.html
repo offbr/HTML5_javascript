@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>for test</title>
+</head>
+<body>
+for test (continue, break)<br>
+<script type="text/javascript">
+	for(k = 1; k <= 10; k++){
+		if( k == 3 ) continue; // 초기로 돌아감 
+		document.write(k + " ");
+		if( k == 5 ) break; // 빠짐
+	}
+	document.write("<hr>");
+
+	// 문제1 : 1 ~ 10 까지의 합 출력(3. 6은 제외)
+	var s = 0;
+	for(k= 1; k <=10; k++){
+		if (k === 3 || k===6) continue;
+		s += k;
+	}
+	document.write("합은" + s);
+
+document.write("<hr>")
+	// 문제2 : 1 ~ 100 까지의 합 출력(5의 배수는 제외)
+	var t=0;
+	for(a=1; a <= 100; a++){
+		if(a%5!==0){
+			t+=a
+		}
+	}document.write("합"+t);
+
+document.write("<hr>");
+
+	var t=0;
+	for(a=1; a <= 100; a++){
+		if(a%5==0) continue;
+			t+=a
+	}document.write("합"+t);
+
+document.write("<hr>");
+	// 문제3 : 1 ~ 1000 까지의 숫자 중 임의의 숫자 배수의 합을 출력
+	// 		   배수는 키보드로 부터 입력 for(초기;목적; 증가<- +a=?)
+	// 		   그런데 숫자의 합이 100 이상이면 정지한다.
+	// 		   정지시 해당 숫자 출력
+		total = 0;
+	var su = prompt("증가치를 입력하세요");
+		for(i = 1; i <= 1000; i += Number(su)){
+			document.write(i + " ");
+			total += i;
+			if(total >= 100){
+				document.write("<bt>" + i);
+				break;
+			}
+		}
+		
+
+
+</script>
+
+</body>
+</html>

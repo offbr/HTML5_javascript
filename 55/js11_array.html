@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>배열</title>
+</head>
+<body>
+Array test<br> <!---->
+<script type="text/javascript">
+	var a; //단순변수
+	var aa = new Array();
+	aa[0] = 10;
+	aa[1] = 20;
+	aa[3] = "<br>결과확인:";
+	document.write(aa[0] + aa[1]);
+	document.write(aa[3] + aa[1] + " " + aa[2]); //2는 잡아둠
+	document.write("<br>크기는 " + aa.length);// 0,1,2,3,
+
+	var m = 0, n = 1, w = 0, x = 1; //첨자변수
+	document.write("<br>" + aa[0] + " " + aa[0,5]+ " " + aa[-1]);
+	document.write("<br>" + aa[m] + " " + aa[n]); 
+	document.write("<br>" + aa[n] + " " + aa[w + 1]+ " " +aa[x]);
+	//변수가 가지고 있는 값을 생각/ 정수만 쓸수 있음
+</script>
+<hr>
+<script type="text/javascript">
+	bb = new Array(100, 200, 300); // 선언과 동시에 값을 입력
+	document.write("<br>" + bb[0] + " " + bb[1] + " " + bb[2]);
+	document.write("<br>");
+	//for(i = 0; i <= 2; i++){ // i <= 2;(배열숫자)
+	for(i = 0; i < bb.length; i++){ // bb.length;(가진 값만큼)
+		document.write(bb[i] + " ");
+	}
+	document.write("<br>");
+	for(var i in bb){ // 향상된 for 객체일떄 씀(배열) in=index(0부터 순차적으로 올라감)
+		document.write(bb[i] + " ");
+	}
+</script>
+<hr>
+<script type="text/javascript">
+	var cc = new Array();
+
+	for(k = 0; k < 10; k++){ //for문으로 배열에 값을 입력
+		cc[k] = k + 1; //1부터 입력한다
+	}
+	document.write(cc[0] + " " + cc[9]);
+	cc[0] = 777; //배열값 수정 
+	cc[1] = "문자";
+	document.write("<br>" + cc[0] + " " + cc[9] + " " + cc[1]);
+</script>
+<hr>
+<script type="text/javascript">
+	var dd = new Array(3); // 선언과 동시에 크기를 지정
+	document.write(dd.length);
+	dd[0] = "하나"; //js는 type이 없다 배열 요소에 입력되는 값은 type에 상관없다.
+	dd[1] = 1;
+	dd[2] = true
+	document.write("<br>" + dd[0] + " " + dd[1] + " " + dd[2]);
+	dd[3] = "마우스"; //배열 요소를 늘려 주면 크기가 자동으로 늘어남(크키가 동적)
+	dd[4] = "모니터";
+
+	document.write("<br>");
+	for(i = 0; i < dd.length; i++){
+		document.write(dd[i] + " ");
+	}
+</script>
+<hr>
+<script type="text/javascript">
+	var ee = []; // 빈 배열
+	ee.push(1); // .push(추가)
+	ee.push(2);
+	ee.push(3, 4, 5);
+	document.write(ee.length);
+	document.write("<br>" + ee[0] + " " + ee[ee.length - 1]);
+	ee[5] = 6; // 추가 또는 수정
+	
+	document.write("<br>");
+	for(i = 0; i < ee.length; i++){
+		document.write(ee[i] + " ");
+	}
+
+	document.write("<br>");
+
+	var animal = ["토끼", "고양이", " ", null, "닭"];//배열에 문자열 기억/저장
+	for(i = 0; i < animal.length; i++){
+		document.write(animal[i] + " ");
+	}
+/*
+	document.write("<br>");
+	var output; //javascript document에 기본적으로 가지고 있는 명령어 확인
+	for (k in document){
+		output += k + "☞ " + document[k] + "<br>";
+	}
+	document.write("<br>document 내의 명령들 : <br>" + output);
+*/
+
+
+</script>
+</body>
+</html>

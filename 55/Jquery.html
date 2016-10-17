@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<script src="jquery-1.12.3.js"></script>
+		<style>
+			.active{
+				color: white;
+				background-color: red;
+			}
+		</style>
+	</head>
+<body>
+	<div id="egoing">
+		Coding Everybody
+	</div>
+	<div id="target">
+		hello world!
+	</div>
+	<script>
+		// document.getElementById('target').innerHTML= 'World Hello';
+		// document.getElementById('')
+		$('#target, #egoing').html('World Hello').addClass('active').css('border', '1px solid green');
+	</script>
+</body>
+</html>

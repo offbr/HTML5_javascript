@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#fish{
+			position: absolute;
+			left: 5px;
+			top: 100px;
+		}
+	</style>
+	<script type="text/javascript">
+		var go = 0;
+			count = 0;
+		window.onload = function (){
+			document.getElementById("btn").onclick = ab;
+			document.getElementById("btn1").onclick = function(){
+				clearTimeout(stop)
+			}
+				//alert("aa");
+			}	
+
+		function ab(){
+			count++;
+			console.log(count);
+			var fish = document.getElementById("fish");{
+				if(count % 50 < 25 ){			
+					document.getElementById("fish").src = "image/fish/fish1.png"
+					go += 10;	
+				}else{
+					document.getElementById("fish").src = "image/fish/fish2.png"
+					go -= 10;
+				}
+				fish.style.left = go + "px";	
+			    stop = setTimeout("ab()", 20);
+				}
+			}
+	</script>
+
+</head>
+<body>
+<br>
+<input type="button" value="Move" id="btn" />
+<input type="button" value="stop" id="btn1" />
+
+<p/>	
+<img src="image/fish/fish1.png" id="fish" />
+
+</body>
+</html>

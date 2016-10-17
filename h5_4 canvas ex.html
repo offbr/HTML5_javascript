@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		img{padding-left: 10px; padding-bottom: 10px; border: 0px;}
+	</style>
+	<script type="text/javascript">
+			
+		var canvas=context=image= "";
+		var count = 0;
+		var move = 0;
+		var go = 0;
+
+		window.addEventListener("load", func, false);
+		function func(){
+			//alert("nice");
+			document.getElementById("btn1").onclick = aa; // 움직임
+			document.getElementById("btn2").onclick = function(){ //멈춤
+				clearTimeout(stop);
+			}
+
+			canvas = document.getElementById("myCanvas");
+			context = canvas.getContext("2d");
+			context1 = canvas.getContext("2d");
+			image = new Image();
+			image.src = "image/a1.png";
+			mainImage = new Image();
+			mainImage.src = "image/batang.png";
+			
+			image.onload = function(){ // 초기 기본 이미지
+				context1.drawImage(mainImage, 0, 0, canvas.width, canvas.height);
+				context.drawImage(image, 0, 100, image.width, image.height);
+			
+			}
+		
+			var imgRun = document.getElementById("btn3");
+			document.getElementById("btn3").onclick = function(){
+			clearTimeout(stop);
+			changeImage(imgRun);	
+			}
+		}
+
+		function changeImage(imgSrc){ // 초기화 세팅
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			image.src = imageArray[0];
+			mainImage.src = "image/batang.png";
+			move = 0; // x 좌표값을 초기화 안주면 멈추기전 상태로 돌아감
+			context.drawImage(mainImage, 0, 0, canvas.width, canvas.height);
+			context.drawImage(image, 0, 100, image.width, image.height);
+		}
+
+		function aa(){ //움직임
+			canvas = document.getElementById("myCanvas");
+			context = canvas.getContext("2d");
+			imageArray = new Array("image/a1.png", "image/a2.png", "image/a3.png", "image/a4.png", 
+									"image/a5.png", "image/a6.png" ,"image/a7.png");
+			image = new Image();
+			image.src =  imageArray[0];	
+			mainImage = new Image();
+			mainImage.src = "image/batang.png";
+			//imgCount = imageArray.length;
+			count++; //이미지 값
+			move += 50;	// x좌표값		
+			image.src = imageArray[count]	
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.drawImage(mainImage, 0, 0, canvas.width, canvas.height);
+			context.drawImage(image, move, 100, image.width, image.height);
+
+			if(count == 6){
+				count = 0;
+			}
+			if(move == 800){
+				move = -100;
+			}	
+			stop = setTimeout("aa()", 100);			
+			//image.src = "image/a1.png";
+		}
+	</script>
+</head>
+<body>
+캔버스 문제<p>
+<canvas id="myCanvas" width="800" height="300" style="border: 1px solid gray;"></canvas>
+<br>
+<button id="btn1">move</button>
+<button id="btn2">stop</button>
+<button id="btn3">초기화</button>
+<br>
+</body>
+</html>

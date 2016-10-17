@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>조건 판단문</title>
+</head>
+<body>
+switch test(elseif문을 대체)<br>
+<script type="text/javascript">
+	var a = 6;
+	if(a % 2 == 0){
+		document.write("짝수");
+		document.write("아하 짝수");
+	}else{
+		document.write("홀수");
+	}
+
+document.write("<br>");
+
+	switch(a % 2){
+		case 0 : 
+			document.write("짝수");
+			document.write("헐 짝수~");
+			break;
+		case 1 :
+			document.write("홀수");
+			break;
+	}
+
+document.write("<br>");
+
+	//var hak = prompt("학점 입력");
+	//document.write("<br>", hak.toUpperCase());
+	hak = "A";
+	var hak2 = hak.toUpperCase();
+	if(hak2 === "A"){
+		document.write("<br>매우 우수");
+	}else if(hak2 === "B"){
+		document.write("<br>우수");
+	}else if(hak2 === "C"){
+		document.write("<br>보통");
+	}else if(hak2 === "D"){
+		document.write("<br>저조");
+	}else{
+		document.write("<br>불량");
+	}
+
+	document.write("<br>");
+
+	switch(hak2){
+		case "A" :
+		document.write("<br>매우 우수");
+		break;
+		case "B" :
+		document.write("<br>우수");
+		break;
+		case "C" :
+		document.write("<br>보통");
+		break;
+		case "D" :
+		document.write("<br>저조");
+		break;
+		default :  // case "F" :
+		document.write("<br>불량");
+		break;
+	}
+
+	document.write("<br>");
+
+	switch(hak2){
+		case "A" :
+		case "B" :
+		case "C" :
+			document.write("<br>잘하고 있네요");
+			break;
+		case "D" :
+			document.write("<br>저조");
+			break;
+		default :
+			document.write("<br>학점을 정확히 입력하시오");
+			break;
+	}
+/*
+	var id = prompt("아이디를 입력하세요"); 
+	var pw = prompt("비밀번호를 입력하세요");
+	switch(id && pw){
+		case "ABC" :
+		case "MY111" :
+			alert("로그인하셨습니다")
+			document.write("로그인하셨습니다");
+			break;
+		default :
+			alert("로그인에 실패했습니다");
+			document.write("로그인에 실패했습니다");
+			break ;
+	}
+*/
+
+</script>
+<hr>
+switch test continue.......<br>
+
+<script>
+	dt = new Date(); // 현재 컴퓨터가 갖고 있는 날짜 및 시간 얻기
+	var month = dt.getMonth() + 1 ; 
+	// 컴퓨터는 0월부터 시작하므로 월에 +1 해준다
+	var day = dt.getDate();
+	var year = dt.getFullYear();
+	document.write("날짜및 시간 : ",month + '-' + day + '-' + year);
+	document.write("<br>요일 : ", dt.getDay()); //일:0 ~ 토:6
+	//문제)switch문 사용 요일 출력
+
+	switch(dt.getDay()){
+		case 0 :
+		document.write("<br>일");
+		break;
+		case 1 :
+		document.write("<br>월");
+		break;
+		case 2 :
+		document.write("<br>화");
+		break;
+		case 3 :
+		document.write("<br>수");
+		break;
+		case 4 :
+		document.write("<br>목");
+		break;
+		case 5 :
+		document.write("<br>금");
+		break;
+		case 6 :
+		document.write("<br>토");
+		break;
+	}
+	//문제)switch문 사용 평일,휴일(토,일) 출력
+	switch(dt.getDay()){
+		case 1 :
+		case 2 :
+		case 3 :
+		case 4 :
+		case 5 :
+			document.write("<br>평일");
+			break;
+		case 6 :
+		case 0 :
+			document.write("<br>휴일");
+			break;
+	}
+document.write("<br>");
+		
+
+
+</script>
+
+</body>
+</html>

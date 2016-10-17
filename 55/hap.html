@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>calc</title>
+	<script type="text/javascript">
+		window.xxonload = function(){
+			document.getElementById("btnCalc").xxonclick = calcFunc;
+			document.getElementById("btnClear").xxonclick = clearFunc
+		}
+
+		function calcFunc() {
+			var numBer = /^[0-9\.]+$/
+
+			if (!frm.num1.value.match(numBer)){
+				alert("1자 이상의 첫번째 숫자 입력");
+				frm.num1.focus();
+				return;
+			}
+			if (!frm.num2.value.match(numBer)){
+				alert("1자 이상의 두번째 숫자 입력");
+				frm.num2.focus();
+				return;
+			}
+
+			var numB1 = Number(frm.num1.value);
+			var numB2 = parseFloat(document.getElementById("num2").value);
+
+			var result = "";
+			if(frm.calc[0].checked)
+				result = numB1 + numB2;
+			else if(frm.calc[1].checked)
+				result = numB1 - numB2;
+			else if(frm.calc[2].checked)
+				result = numB1 * numB2;
+			else if(frm.calc[3].checked == true){
+				if (frm.num2.value == "0"){
+					alert("0으로는 나눌수 없어요");
+					frm.num2.focus();
+					return;
+				}
+				result = numB1 / numB2;
+			}
+
+			document.getElementById("show").innerText = result;
+		}
+
+		function clearFunc(){
+			frm.num1.value = "";
+			frm.num2.value = null;
+			frm.calc[0].checked = true;
+			document.getElementById("show").innerText = "";
+		}
+	</script>
+</head>
+<body>
+**미니 계산기 **<p>
+<form name="frm">
+숫자1: <input type="text" id="num1"></input><br>
+숫자2: <input type="text" id="num2" /><br>
+연산선택: 
+<input type="radio" name="calc" value = "+" checked="true">+ 
+<input type="radio" name="calc" value = "-">-
+<input type="radio" name="calc" value = "*">* 
+<input type="radio" name="calc" value = "/">/ <br>
+결과 : <span id="show"></span>
+<br><br>
+<input type="button" id="btnCalc" value="계 산"></input>
+<input type="button" value="초기화" id="btnClear"></input>
+</form>
+</body>
+</html>

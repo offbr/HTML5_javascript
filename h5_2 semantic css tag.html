@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>html5 css꾸미기</title>
+	<style type="text/css">
+		body{
+        	width: 1024px;
+        	margin: 0 auto;
+		}
+		nav{
+		   	float: left; width: 200px;
+		}
+		article{
+		    float: left; width: 600px;
+		}
+		aside{
+			float: left; width: 200px; font-size: 0.8em;
+		}
+		footer{
+			clear: both; /* float 성질의 해제 */
+		}
+		li.go_site{
+			float: left; width: 60px; margin-left: 5px;
+		}
+		li a{
+			display: block; /* 부모 요소의 너비와 높이에 맞춰 padding 자리까지 꽉 차게 된다. */
+		}
+		ul{
+			list-style: none;
+		}
+		ul.site{
+			border-style: solid; border-width: 1px;
+			overflow: auto; width: 90%; text-decoration: none;
+		}
+ 
+	</style>
+</head>
+<body>
+<header>
+	<h1>여긴 머리글</h1>
+	<ul class="site">
+		<li class="go_site"><a href="http://www.naver.com">naver</a></li>
+		<li class="go_site"><a href="http://www.daum.net">daum</a></li>
+		<li class="go_site"><a href="http://www.korea.com">korea</a></li>
+	</ul>
+</header>
+<nav>
+	<h2>네비게이션</h2>
+	<ul>
+		<li><a href="">메인</a></li>
+		<li><a href="">쇼핑</a></li>
+		<li><a href="">고객센터</a></li>
+		<li><a href="">연락처</a></li>
+	</ul>
+</nav>
+<article>
+	<h2>본문 내용</h2>
+	<span>
+동대문서 산 '짝퉁' 인터넷에서 명품으로 속여 팔아
+전문가도 "진위 가려내기 어렵다"…1만건 이상 판매
+해외 유명브랜드의 가짜 상품, 이른바 '짝퉁'을 구입한 뒤 인터넷을 통해 팔아치운 30대 2명이 경찰에 붙잡혔다.
+경기 용인동부경찰서는 사기 등의 혐의로 최모(30)씨 등 2명을 구속했다고 24일 밝혔다.
+최씨 등은 지난해 6월부터 최근까지 서울 동대문 등에서 토리버치, 코치, 라코스테 등 해외 유명브랜드의 짝퉁 의류, 가방, 구두 등 잡화를 사들인 뒤 정품으로 속여 인터넷 오픈마켓에서 판매, 7억여원을 챙긴 혐의를 받고 있다.
+	</span>
+	<aside>
+		<h2>광고</h2>
+		<ul>
+			<li>소프트웨어</li>
+			<li>하드웨어</li>
+			<li>각종툴</li>
+		</ul>	
+	</aside>
+</article>
+<footer>
+	<h2>바닥글</h2>연락처 ☎ 02-111-1234
+</footer>
+</body>
+</html>

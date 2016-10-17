@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>event</title>
+	<script type="text/javascript">
+		function func1(){
+			document.getElementById("show").innerHTML = "전통적인 방식";
+		}
+
+		var a = 10; //기본형 변수
+		var b = { //객체형 변수 
+			funcNew:function(){ //b안에 함수를 부를땐 b.funcNew()
+				document.getElementById("show").innerHTML = "b 객체변수의 함수(메소드)처럼 사용";
+			},
+			funcNew2:function(){
+				document.getElementById("show").innerHTML = "b 객체변수의 멤버로 사용";
+			}		
+		}
+
+		window.onload = function(){ //문서 로딩이 완료되면 자동 수행(callback function : 시스템에 의해 호출 됨)
+			//alert("success");
+			exBtn1 = document.getElementById("btn1");
+			exBtn1.onclick = function(){ //이벤트 핸들러 장착
+				document.getElementById("show").innerHTML = "클릭1 수행"
+			}
+	/*	
+			exBtn2 = document.getElementsByName("myBtn"); // 가져오는 값이 두개 이상이면 배열로 잡힘
+			exBtn2[0].onclick = function(){ //배열
+				document.getElementById("show").innerHTML = "클릭2 누름"
+			}
+			exBtn2[1].onclick = function(){ //배열
+				document.getElementById("show").innerHTML = "클릭3 처리"
+			}
+	*/		
+			exBtn2 = document.getElementsByName("myBtn")[0]; //배열 선언을 뒤쪽에해서 배열 아님
+			exBtn2.onclick = function(){
+				document.getElementById("show").innerHTML = "클릭2 누름"
+			}
+
+			exBtn3 = document.getElementsByTagName("input")[5]; //(ByTagName)
+			exBtn3.onclick = function(){
+				document.getElementById("show").innerHTML = "클릭3 만세"
+			}
+			/*
+			document.getElementById("btn4").onclick = function(){ //자주씀
+				document.getElementById("show").innerHTML = "클릭4 굿"
+
+			}
+			*/
+			document.getElementById("btn4").onclick = func; // 클릭하면 수행한다 () 생략
+
+			//이벤트 장착 및 해제 
+			document.getElementById("btn5").addEventListener("click", func2, false); //클릭 이벤트가 발생하면 func2 호출  //자주씀
+		}
+
+		function func(){
+			document.getElementById("show").innerHTML = "클릭4 나이스"
+		}
+
+		function func2(){
+			document.getElementById("show").innerHTML = "클릭5 만났네"
+			
+			document.getElementById("btn5").removeEventListener("click", func2, false); //해제 
+			//한번만 먹힘 //자주씀
+		}
+	</script>
+</head>
+<body>
+<p>** 이벤트 정리 **</p> <!-- 비권장함 이벤트 핸들러(onclick)는 head tag 내 적고 body tag에서 호출권장) -->
+<input type="button" value="버튼1" onclick="func1()" /><br>
+<input type="button" value="버튼2" onclick="b.funcNew()" /><br>
+<input type="button" value="버튼3" onclick="b.funcNew2()" /><br>
+<br>
+<!--이벤트 분리 --> <!--아이디는 중복불가, 네임은 중복가능 -->
+<input type="button" value="클릭1" id="btn1" />
+<input type="button" value="클릭2" id="btn2" name="myBtn" />
+<input type="button" value="클릭3" id="btn3" name="myBtn"/>
+<input type="button" value="클릭4" id="btn4" />
+<input type="button" value="클릭5" id="btn5" />
+
+<hr>
+<div id="show"></div>
+
+</body>
+</html>

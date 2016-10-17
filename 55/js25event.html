@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		function func1(){ //ajax를 못하므로 서버에서 읽어왔다 생각하고 작성함
+			var tag1 = "이름 : <input type='text' name='irum' />";
+			var tag2 = "나이 : <input type='text' name='nai' />";
+
+			document.getElementById("test1").innerHTML = tag1;
+			document.getElementById("test2").innerHTML = tag2;
+			//innerHTML 서버에서 바꾸는게 아니라 클라이언트 사이드 즉 HTML내에서 바꾼다
+
+		}
+
+		function func2(){
+			var s1 = "<ul><li><b><i>일반 메시지로 변경</i></b></li></ul>";
+			var s2 = "<b><i>나도 변경</i></b>";
+
+			document.getElementById("test1").innerHTML = s1; //Tag를 받아들임
+			document.getElementById("test2").innerText = s2; //Text로만 받아들인다
+
+			
+		}
+	</script>
+</head>
+<body>
+<P>** 프로그램 진행 도중 태그 및 자료 변경 **</P>
+<a href="http://www.naver.com:80/index.html">네이버 문서로 기본문서 덮어쓰기</a><br>
+
+<div id="test1">innerHTML은 현재 화면자료를 수정</div> <!--innerHTML = dom-->
+<div id="test2">안녕하세요</div>
+<input type="button" value="처리1" onclick="func1()"></input>
+<input type="button" value="처리2" onclick="func2()"/>
+
+</body>
+</html>

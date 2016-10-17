@@ -1,0 +1,84 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		function dispCalc(s1, s2, s3){
+			//document.write(s1, s2, s3);
+			document.write(s1 + s2 + s3 + "= " + eval(s1 + s2 + s3));
+			document.write("<hr>");
+			var a = 0;
+			switch(s2){
+				case "+":
+					a = Number(s1) + Number(s3);
+				break;
+				case "-":
+					a = Number(s1) - Number(s3);
+				break;
+				case "*":
+					a = Number(s1) * Number(s3);
+				break;
+				case "/":
+					a = Number(s1) / Number(s3);
+			}
+				document.write(s1 + s2 + s3 + "= " + a);
+				document.write("<hr>");
+
+			var a = 0;
+			if(s2 == "+"){
+				a = Number(s1) + Number(s3);
+				document.write(s1 + s2 + s3 + "= " + a);
+			}
+			if(s2 == "-"){
+				a = Number(s1) - Number(s3);
+				document.write(s1 + s2 + s3 + "= " + a);
+			}
+			if(s2 == "*"){
+				a = Number(s1) * Number(s3);
+				document.write(s1 + s2 + s3 + "= " + a);
+			} 
+			if(s2 == "/"){
+				a = Number(s1) / Number(s3);
+				document.write(s1 + s2 + s3 + "= " + a);
+			}  
+		}
+
+	</script>
+</head>
+<body>
+문자열 자르기 연습(split)<br>
+<script type="text/javascript">
+	var str = "개, 고양이, 악어";
+	document.write(str);
+
+	document.write("<br>");
+	var arr = [];
+	arr = str.split(',');
+	document.write(arr[0] + " " + arr[1] + " " + arr[2]);
+	
+	document.write("<br>");
+
+	for(i = 0; i < arr.length; i++){
+	document.write(arr[i] + " ");
+	}
+	document.write("<br>");
+	for(i in arr){
+		document.write(arr[i] + " ");
+	}
+</script>
+<hr>
+문제) 키보드로 부터 두수와 연산자를 입력받는다. (prompt 함수 이용)
+<br> 예) "5 + 6"
+dispCalc 함수를 호출한 후 그 연산 결과를 출력하라.
+<hr>
+<script type="text/javascript">
+	var s = prompt("사칙연산하고 싶은 두 수를 입력 하시오" + "\n(예) 5 + 6 ," + " 2 * 6");
+	//document.write(s);
+	var a = [];
+	a = s.split(" ");
+	//document.write(a);
+	//document.write(a[0] + " " + a[1] + " " + a[2]);
+	dispCalc(a[0], a[1], a[2]);
+</script>
+</body>
+</html>

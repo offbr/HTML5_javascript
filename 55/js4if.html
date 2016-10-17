@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>if test</title>
+</head>
+<body>
+조건 판단문 단순if 연습 1 <br>
+<script>
+	var su = 5;
+	if (su >= 3) {	// 수행할 문장이 복수일 경우 에는 블록화{ } 한다
+		document.write('크구나');
+		document.write('<br>안녕');
+	}			
+	document.write('<br> if test1 end <br>');
+	
+	//else test
+	document.write('<br>');
+	var su2 = 1;
+	if (su2 >= 2) {
+		document.write('크네');
+	}else{
+		document.write('작네');
+	}
+	document.write('<br> if test2 end <br>');
+
+	//else test
+	document.write('<br>');
+	var su2 = 6;
+	if (su2 % 2 ===0) {
+		document.write('짝수');
+	}else{
+		document.write('홀수');
+	}
+	document.write('<br> if test3 end <br>');
+    
+    //
+	document.write('<br>');
+	var irum = "한국인"
+	if(irum === "홍길동") {
+			document.write('맞네');
+	}else{
+		document.write('아니야');
+	}
+	document.write('<br> if test4 end <br>');
+
+	/* 키보드 자료입력 방법
+	document.write('<br> 키보드로 자료 입력받기<br>');
+	re = prompt("자료 입력:"); // 취소시 null
+	document.write(re + 10); // re에 입력된 자료는 string type/ 문자열로 받는다 
+	document.write("<br>")
+	document.write(Number(re) + 10); // 숫자로 받을땐 Number 
+	*/
+
+	/*
+	var jumsu;
+	jumsu = prompt("평균 점수 입력 : "); //대화상자/다이얼로그박스
+	document.write("<br>결과는 ", jumsu);
+	*/
+	/*
+	var jumsu;
+	jumsu = prompt("평균 점수 입력 : ");
+	if(jumsu >= 80) {
+		document.write("<br>우수하네요 ==>점수는 " + jumsu);
+		document.write("<br>계속 분발하세요");
+	}else
+		document.write("<br>잘하자!!!");
+		
+	document.write("<br>다음작업 계속");
+	*/
+
+	var jumsu;
+	jumsu= 88;
+	if(jumsu >= 80) {
+		document.write("<br>우수하네요 ==>점수는 " + jumsu);
+		document.write("<br>계속 분발하세요");
+	}else
+		document.write("<br>잘하자!!!");
+		
+	document.write("<br>다음작업 계속");
+
+	//다중 if
+	//ave = prompt("평균 점수 입력:");
+	ave = 93;
+	if(ave >= 90){
+		if (ave >= 95){
+			document.write("<br> 95점 이상");
+		}else{
+			document.write("<br> 90~ 94점 사이");
+		}
+	}else{
+		document.write("<br> 90점 미만");
+	}
+
+	//ave = prompt("평균 점수 입력:");
+	if(ave >= 90){
+		document.write("<br> 90점 이상");
+	}else{
+		if(ave >= 80){
+			document.write("<br> 80점 이상");
+		}else{
+			document.write("<br> 80점 미만");
+		}
+	} 
+
+	//ave = prompt("평균점수 입력:");
+	ave = 88;
+	if(ave >= 80 + 10 && ave <= 100){   
+		document.write("<br>우수");
+	}else{
+		document.write("<br>일반");
+	} 
+
+	//ave = prompt("평균점수 입력:"); 
+	document.write("<br>");
+	ave = 100;
+	if(ave >= 90){
+		document.write("수");
+	}else if(ave >= 80 ){
+		document.write("우");
+	}else if(ave >= 70 ){
+		document.write("미");
+	}else if(ave >= 60 ){
+		document.write("양");
+	}else if(ave < 60 ){       //비권장
+		document.write("가");
+	}
+
+	//ave = prompt("평균점수 입력:");
+	document.write("<br>");
+	ave = 100;
+	if(ave >= 90){
+		document.write("수");
+	}else if(ave >= 80 ){
+		document.write("우");
+	}else if(ave >= 70 ){
+		document.write("미");
+	}else if(ave >= 60 ){
+		document.write("양");
+	}else{						// 권장
+		document.write("가");
+	}
+
+	//문제 : 키보드로부터 id와 password를 입력받아 
+	// 		 맞으면 '정회원'' 틀리면 '회원가입 하시오' 라는 문자열 출력
+	// 		 id: ABC  password: MY111   /대소문자 구분
+</script> 
+
+<script>
+/*
+//document.write("<br>");
+//id = prompt("아이디를 입력하시오")
+if (id === "ABC"){
+	document.write("정회원")
+}else{
+	document.write("회원가입 하시오")
+}
+//password = prompt("비밀번호를 입력하시오")
+if (password === MY111){
+    document.write("정회원")
+}else{
+	document.write("회원가입하시오")
+}
+*/
+/*
+
+id = prompt("아이디를 입력하시오")
+pw = prompt("비밀번호를 입력하시오")
+if(id==="ABC" && pw==="MY111"){
+	document.write("정회원");
+}else{
+	document.write("회원가입하시오");
+}
+
+*/
+/*
+id = prompt("아이디를 입력하시오")
+pw = prompt("비밀번호를 입력하시오")
+id=id.toUpperCase();
+pw=pw.toUpperCase();
+if(id==="ABC" && pw==="MY111"){
+	document.write("정회원");
+}else{
+	document.write("회원가입하시오");
+}
+*/
+ /*
+var id = prompt("아이디를 입력하세요")
+var password = prompt("비밀번호를 입력하세요")
+	if(id === "ABC"){ 
+		if(password === "MY111"){
+		alert("로그인하셨습니다");
+	} else {
+		alert("로그인에 실패하셨습니다");
+	}
+} esel { 
+	alert("아이디를 확인하세요");
+}
+ */
+
+
+ 
+</script>
+
+
+
+</body>
+</html>

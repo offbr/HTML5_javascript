@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>canvas</title>
+<script type="text/javascript">
+var context;
+var holes = []; //총알 구멍	
+var backImage = new Image();
+backImage.src = "images/background.jpg"; //배경 이미지
+
+var holeImage = new Image();
+holeImage.src = "images/hole.png"; //총구 이미지
+var snipeImage = new Image();
+snipeImage.src = "images/snipe.png"; //총 이미지
+
+var bubbleImg0 = new Image(); //버블 이미지
+bubbleImg0.src = "images/b0.png";	
+var bubbleImg1 = new Image();
+bubbleImg1.src = "images/b1.png";
+var bubbleImg2 = new Image();
+bubbleImg2.src = "images/b2.png";
+var bubbleImg3 = new Image();
+bubbleImg3.src = "images/b3.png";
+var bubbleImg4 = new Image();
+bubbleImg4.src = "images/b4.png";
+var bubbleImg5 = new Image();
+bubbleImg5.src = "images/b5.png";
+
+var bubbles = []; //풍선 이미지 배열
+var bubbleChip = []; //파편 이미지 배열
+var bubbleImg = bubbleImg0; //초기 풍선 타겟
+
+var fireSound = new Audio("sounds/fire.wav"); //발사 소리
+var jangSound = new Audio("sounds/jang.wav"); //장전 소리
+
+var banY = 0; // 총 발사 후 반동 효과 Y축
+var isJanged = true; //배경 화면에 총알 구멍 효과
+
+var snipeX = 400, snipeY = 150;  // 총구 초기좌표
+var targetX = 0; var targetY = 0; // 풍선의 초기좌표
+var bubbleX = 0; bubbleY = 0; // 버블 (타겟)목표물 좌표
+var moveCount = 0; //버블의 이동 횟수
+var deltaX = 0, deltaY = 0; //버블과 총구의 전체 거리 
+var stepX = 0.0, stepY = 0.0; //버블이 총구를 찾아 가는 증가 값
+
+window.onload = function(){
+	initImage(); //버블 이미지
+	var canvas = document.getElementById("myCanvas");
+	context = canvas.getContext("2d");
+
+	setInterval(drawScreen, 50); // 주기적으로 화면을 갱신 setTimeout 는 시간마다  함수 호출 // 차이 있음
+
+	document.body.onmousedown = makeHole;
+	document.body.onmousemove = moveSnipe;
+
+}
+
+function initImage(){ //버블이미지 배열
+	bubbles[0] = bubbleImg0;
+	bubbles[1] = bubbleImg1;
+	bubbles[2] = bubbleImg2;
+	bubbles[3] = bubbleImg3;
+	bubbles[4] = bubbleImg4;
+	bubbles[5] = bubbleImg5;
+}
+
+function drawScreen(){
+	context.drawImage(backImage, 0, 0, 890, 300); //배경 이미지
+
+	for(index in holes){
+		context.drawImage(holeImage, holes[index].x - 10, holes[index].y - 10, 20, 20); //총구 이미지 및 총알 구멍  
+	}
+
+	//총구를 버블(타겟)의 중앙에 맞추기 
+	context.drawImage(bubbleImg, bubbleX - 25, bubbleY - 25, 50, 50); // 버블(타겟)이미지
+
+	for(var i = 0; i < bubbleChip.length; i++){
+		context.drawImage(bubbleChip[i].img, bubbleChip[i].x, bubbleChip[i].y, 10, 10);
+		// 버블 파편이미지 		
+	}
+	//버블 파편 이동
+	for(var i = bubbleChip.length - 1; i >= 0; i--){
+		bubbleChip[i].x += bubbleChip[i].speedX;
+		bubbleChip[i].y += bubbleChip[i].speedY;
+	}
+	//총구 그리기
+	context.drawImage(snipeImage, snipeX - 50, snipeY - 50 - banY, 100, 100);
+
+	moveToTarget(); //버블을 총구까지 움직인다  
+
+	if(banY > 0){ //반동 줄이기
+		banY -= 10;
+
+		if(banY <= 0){
+			banY = 0;
+			isJanged = true; // 
+			makeJang();
+		}
+	}
+}
+
+
+function moveToTarget(e){
+	var msg = "targetX : " + targetX + " targetY : " + targetY + "<br>"+
+	 		"snipeX : " + snipeX + " snipeY : " + snipeY + "<br>" +
+	 		"bubbleX : " + bubbleX + " bubbleY : " + bubbleY + "<br>" +
+	 		"moveCount : " + moveCount; // 좌표 및 점수창
+
+	funcLog(msg);
+
+	if(moveCount == 100) return; // moveCount 값이 100이면 총구를 따라오지 않는다
+	bubbleX += stepX; //버블이 총구를 따라옴
+	bubbleY += stepY; // 버블이 총구를 따라옴
+
+	moveCount++; 
+
+}
+
+function funcLog(msg){
+	var con = document.getElementById("console"); //좌표및 점수창
+	con.innerHTML = msg + "<br>";
+}
+
+function makeHole(e){ //총알 구멍 만들기
+	var eventX = e.offsetX;
+	var eventY = e.offsetY;
+
+	var target = e.target.nodeName;
+	if(target == "CANVAS" && isJanged){ //캔버스일때만(안에서만 true)
+	 	fireSound.currentTime = 0; // 발사까지 시간 바로 수행
+	 	fireSound.play(); //발사소리
+
+	 	var hole = [];
+	 	hole.x = eventX; // 총알 구멍 = 캔버스값 
+	 	hole.y = eventY; // 총알 구멍 = 캔버스 값
+	 	holes.push(hole); //배열에 hole 넣기
+
+	 	isJanged = false
+	 	banY = 30; //총구 반동값
+
+	 	checkBubble(hole);
+	}
+}
+
+function checkBubble(hole){ // 버블이 총에 맞았는지 검사
+	if(hole.x > bubbleX - 25 && hole.x < bubbleX +25 &&
+	hole.y > bubbleY -25 && hole.y < bubbleY + 25){
+		makeBubbleChip();
+	}  // 버블이 초기 값이 50이므로  반값준다 히트박스를 생각해서 50좌표값 안에서 하면 검사
+}
+
+function makeBubbleChip(){ //버블 파편 만들기
+	//alert("good");
+	var chipX = bubbleX;
+	var chipY = bubbleY;
+	
+	for(var i = 0; i < 100; i++){ //파편 10개 
+		var chip = [];
+		var speedX = Math.round(Math.random() * 20 - 10); //랜덤 x축 파편
+		var speedY = Math.round(Math.random() * 20 - 10); //랜덤 y축 파편
+		var imgIndex = Math.floor(Math.random() * 6);
+		console.log(snipeX, " ", speedY, " ", imgIndex);
+
+		chip.x = chipX; // 버블값
+		chip.y = chipY; //버블값
+		chip.speedX = speedX;
+		chip.speedY = speedY;
+		chip.isDead = false; //자바스크립에 있는 isDead
+		chip.img = bubbles[imgIndex]; //칩은 6개
+		bubbleChip[i] = chip;
+
+	}
+
+	makeNewBubble(); //버블이 터지고 난 후 새 버블 만들기
+}
+
+function makeNewBubble(){
+	var x = Math.round(Math.random() * 890);
+	var y = Math.round(Math.random() * 890);
+	var imgindex = Math.floor(Math.random() * 6);
+
+	bubbleX = x;
+	bubbleY = y;
+	bubbleImg = bubbles[imgindex];
+	targetX = snipeX;
+	targetY = snipeY;
+	deltaX = targetX - bubbleX;
+	deltaY = targetY - bubbleY;
+	stepX = deltaX / 10.0;
+	stepY = deltaY / 10.0;
+	moveCount = 0;
+
+
+}
+
+function moveSnipe(e){
+	var eventX = e.offsetX; // 캔버스 값 
+	var eventY = e.offsetY; // 캔버스 값
+
+	var target = e.target.nodeName; //자식태그 이름이 CANVAS
+	if(target == "CANVAS"){ //캔버스일때만(안에서만 true)
+		snipeX = eventX; // 총구 X좌표 = 캔버스
+		snipeY = eventY; // 총구 Y좌표 = 캔버스
+
+		targetX = eventX; // 버블타겟점 X좌표 = 컨버스
+		targetY = eventY; // 버블타겟점 Y좌표 = 캔버스
+
+		deltaX = targetX - bubbleX; // 총구와 버블 사이의 X축 방향거리 
+		deltaY = targetY - bubbleY; // 총구와 버블 사이의 Y축 방향거리
+
+		stepX = deltaX / 10.0; // 100등분 // 거리가 멀면 버블이 빨라지고 
+		stepY = deltaY / 10.0; // 100등분 // 가까우면 느려짐
+		moveCount = 0; //100등분한 거리를 몇번 이동횟수 표시
+
+	}
+}
+
+function makeJang(){ //장전 소리 내기
+	jangSound.currentTime = 0;
+	jangSound.play();
+}
+
+</script>
+</head>
+<body>
+<div style="margin: auto">
+	<canvas id="myCanvas" width="890" height="300"></canvas>
+</div>
+<div id="console" style="width: 500px;"></div>
+</body>
+</html>

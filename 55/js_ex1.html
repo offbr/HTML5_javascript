@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		/*img{
+			position: absolute;
+			left: 50px;
+		}*/
+		#comeImage{
+			position: absolute;
+			left: 100px;
+		}
+		#mimage { /* 메인 이미지 */
+			position: absolute;
+			width: 1150px;
+			height: 600px;
+		}
+
+		#show1, #show2{ /* 로그인버튼, 환영인사 */
+			position: absolute;
+			right:100px; 
+			top: 100px;
+		}
+		#etc{ /* 로그아웃 버튼 */
+			position: absolute;
+			right:100px; 
+			top: 130px;
+		}
+		#banner{ /* 배너 위치*/
+			position: absolute;
+			right:60px; 
+			top: 300px;
+			width: 240px;
+			height: 500px;
+		}
+		#goIng, #comeIng{ /* 들어가기, 홈페이지로 이동 위치, 버튼을 하이퍼링크처럼 보이기*/
+			position: absolute;
+			width: 150px;
+			left: 550px;
+			bottom: 10px;
+			background-color: transparent;
+			text-decoration: underline;
+  			border: none;
+		}
+		#leftB{ /* 왼쪽 버튼 위치 지정 */
+			position: absolute;
+			top: 400px;
+		}
+		#leftBtn{ /* 왼쪽 버튼 화살표양만들기 */
+    		border-right: 10px solid black;
+    		border-top: 10px solid transparent;
+    		border-bottom: 10px solid transparent;
+    		background-color: transparent;
+		}
+		#rightB{ /* 오른쪽 버튼 위치 지정 */
+			position: absolute;
+			top: 400px;
+			right: 400px;
+		}
+		#rightBtn{ /* 오른쪽 버튼 화살표양만들기 */
+			border-left: 10px solid black;
+		    border-top: 10px solid transparent;
+		    border-bottom: 10px solid transparent;
+		    background-color: transparent; 
+		}
+		
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			ban = document.getElementById("banner"); //배너
+			document.getElementById("btn1").onclick = login; //로그인 버튼
+			document.getElementById("btn2").onclick = logout; //로그아웃 버튼
+			document.getElementById("goIng").onclick = move; //들어가기 버튼
+			document.getElementById("comeIng").onclick = come; //홈페이지로 이동 버튼
+			//document.getElementById("leftBtn").onclick = left; // 이미지 왼쪽 이동
+			//document.getElementById("rightBtn").onclick = right;
+
+			 // 이미지 오른쪽 이동
+			bn(); //배너실행
+		}
+		var bannerMove = new Array(); //배너 이미지
+			bannerMove[0] = "<img src = 'image/1.jpg'>";
+			bannerMove[1] = "<img src = 'image/2.jpg'>";
+			bannerMove[2] = "<img src = 'image/3.jpg'>";
+			bannerMove[3] = "<img src = 'image/4.jpg'>";
+			bannerMove[4] = "<img src = 'image/5.jpg'>";
+		var ban = 0;
+		var count = 0;
+
+	function bn (){		// 배너
+		count++;
+		if(count == 5){
+			count = 0;
+		}
+		ban.innerHTML = bannerMove[count];
+		setTimeout("bn()", 2000);		
+	}
+	function login(){
+		if(nnn.id.value === "korea"){
+			if(nnn.pw.value === "123"){			
+				var a = (nnn.id.value + "님 환영합니다.");
+				document.getElementById("show2").innerHTML = a;	// 환영인사			
+				document.getElementById("etc").style.display = ""; //로그아웃 버튼 나옴
+				document.getElementById("show1").style = 'display:none'; // 로그인 메뉴 사라짐
+				document.getElementById("goIn").style.display = ""; // 들어가기 버튼 나옴
+			} else {
+				alert("비밀번호를 확인하세요");
+				nnn.pw.value = "";
+				nnn.pw.focus();
+				return;
+				}
+		} else{
+			alert("아이디를 확인하세요")
+			nnn.id.value = "";
+			nnn.id.focus();
+			return;
+		}
+		nnn.method="post";
+	}
+	function logout(){
+		document.getElementById("etc").style = 'display:none'; //로그아웃 숨기기
+		document.getElementById("show1").style.display = ""; //로그인메뉴 보이기
+	}
+
+	var comeMove = new Array();
+		//comeMove[0] = 'image/c1.jpg';
+		comeMove[0] = "<img src = 'image/c1.jpg' style='width:1000px; height:600px;'>";
+		comeMove[1] = "<img src = 'image/c2.jpg' style='width:1000px; height:600px;'>";
+		comeMove[2] = "<img src = 'image/c3.jpg' style='width:1000px; height:600px;'>";
+		comeMove[3] = "<img src = 'image/c4.jpg' style='width:1000px; height:600px;'>";
+		comeMove[4] = "<img src = 'image/c5.jpg' style='width:1000px; height:600px;'>";
+		comeMove[5] = "<img src = 'image/c6.jpg' style='width:1000px; height:600px;'>";
+	var com = 0;
+	//com = document.getElementById("comeImage");
+
+	function move(){ //들어가기 
+		document.getElementById("mainImage").style = 'display:none'; // 들어가기 누르면 메인 숨기기
+		document.getElementById("goIn").style = 'display:none'; //들어가기 누르면 들어가기버튼 숨기기
+		//document.getElementById("cimage").src = comeMove[0];
+		document.getElementById("comeImage").innerHTML = comeMove[0];
+		document.getElementById("comeIn").style.display = ""; //홈페이지로 이동 보이기
+		document.getElementById("comeImage").style.display = ""; //들어간 후 이미지
+		document.getElementById("leftB").style.display = ""; // 왼쪽넘김 이미지
+		document.getElementById("rightB").style.display = ""; // 오른쪽넘김 이미지
+
+	}
+	function come(){ //홈페이지로 이동
+		document.getElementById("mainImage").style.display = ""; // 메인 보이기
+		document.getElementById("goIn").style.display = ""; // 들어가기 보이기
+		document.getElementById("comeIn").style = 'display:none'; //홈페이지로 이동 숨기기
+		document.getElementById("comeImage").style = 'display:none'; // 들어간후 메인이미지 숨기기
+		document.getElementById("leftB").style = 'display:none'; // 왼쪽넘김 이미지
+		document.getElementById("rightB").style = 'display:none'; // 오른쪽넘김 이미지
+
+	}
+
+	function left(){
+		if(com > 0){
+			com--;
+			document.getElementById("comeImage").innerHTML = comeMove[com];
+		}
+	}
+
+	function right(){
+		if(com < comeMove.length - 1){
+			com++;
+			document.getElementById("comeImage").innerHTML = comeMove[com];
+		}	
+	}
+	</script>
+</head>
+<body>
+<h1 align="center">안녕하세요 환영합니다.</h1>
+<div id="mainImage"><img src="image/main.jpg" id="mimage" /></div> <!--메인이미지-->
+<div id="leftB" style="display:none"><a href="javascript:left()"><button id="leftBtn"></button></a></div>
+<div id="rightB" style="display:none"><a href="javascript:right()"><button id="rightBtn"></button></a></div>
+<div id="comeImage" style="display:none"></div>
+<div id="goIn" style="display:none"><button id="goIng">들어가기</button></div>
+<div id="comeIn" style="display:none"><button id="comeIng">홈페이지로 이동</button></div>
+<form name="nnn">
+<div id="show1">
+<input type="text" name="id" placeholder="아이디" maxlength="8" /><br>
+<input type="password" name="pw" placeholder="비밀번호" />
+<input type="button" id="btn1" value="로그인" />
+</div>
+<div id="etc" style="display:none"><button id="btn2">로그아웃</button></div>
+	<br>
+	<div id="show2"></div>
+	<div id="banner"></div>
+</form>
+</body>
+</html>

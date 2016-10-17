@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas</title>
+	<style type="text/css">
+		canvas{ 
+			border: blue dotted 1px; 
+			cursor: crosshair;
+		}
+		#clr div{
+			cursor: pointer;
+			width: 20px;
+			height: 20px;
+			float: left;
+		}
+	</style>
+	<script type="text/javascript">
+	var draw = false;
+	var preX, preY;
+	var ctx;
+		window.onload = function(){
+			var canvas = document.getElementById("can");
+			ctx = canvas.getContext("2d");
+			ctx.strokeStyle = "black";
+
+			//선그리기 작업 ==============================
+			//canvas.onmousedown = func1; //canvas.addEventListener("mousedown", func1, false); 동일
+			canvas.addEventListener("mousedown", func1, false); 
+			canvas.addEventListener("mouseup", func2, false);
+			canvas.addEventListener("mousemove", func3, false);
+
+			//선 색상 팔레트에서 선택하기 =========================
+			//var pals = document.getElementsByName("pal");
+			//alert(pals.length); // 4개잡힘 
+			//document.getElementsByName("pal")[0].addEventListener("click", func4, flase);
+			//document.getElementsByName("pal")[0].onclick = func4;
+			document.getElementsByName("pal")[0].onclick = function(){
+				funcColor(0);
+			}
+			document.getElementsByName("pal")[1].onclick = function(){
+				funcColor(1);
+			}
+			document.getElementsByName("pal")[2].onclick = function(){				
+				funcColor(2);
+			}
+			document.getElementsByName("pal")[3].onclick = function(){				
+				funcColor(3);
+			}
+
+			// 굵기 선택 ===============================
+			document.getElementById("bold").onchange = function(){
+				bold = nnn.bold.options[nnn.bold.selectedIndex].value;
+				ctx.lineWidth = bold;
+			}
+			// 화면 초기화 =============================
+			document.getElementById("clear").onclick = function(){
+				//alert("clear");
+				ctx.fillStyle = "white";
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				document.getElementById("result").innerHTML = "<img src = " + ">"
+			}
+
+			// 별도 보관 =============================
+			document.getElementById("save").onclick = function(){
+				//alert("save");
+				//bb = canvas.toDataURL();
+				/*var a = document.createElement("img");
+				var t = document.Attribute('canvas.toDataURL()');
+				a.appendChild(t);
+				document.getElementById("result").appendChild(a);
+				*/
+				//var aa = toDataURL(); 
+				document.getElementById("result").innerHTML = "<img src = " + canvas.toDataURL() + ">"
+				
+				// "< img src= canvas.toDataURL()"
+
+			}
+
+			// 지우개 =============================
+			document.getElementById("eraser").onclick = function(){
+				//alert("eraser");
+				ctx.strokeStyle = "white";
+			}
+
+		}	
+
+		function func1(event){ //func1(event가 생략)
+			//console.log(event.pageX, " ", event.pageY); //브라우저기준
+			//console.log(event.offsetX, " ", event.offsetY); //캔버스기준
+
+			draw = true;
+			preX = event.pageX;
+			preY = event.pageY;
+		}
+
+		function func2(event){ 
+			draw = false;
+		}
+
+		function func3(event){ 
+			if(draw == true){
+				//console.log(event.offsetX, " ", event.offsetY);
+				//ctx.lineWidth = 5;
+				ctx.beginPath();
+				ctx.moveTo(preX, preY); //해당좌표 시작점 이동
+				ctx.lineTo(event.offsetX, event.offsetY); // 이동좌표값 //현재 좌표값
+				ctx.stroke();// 선그리기
+				preX = event.offsetX; //자유곡선이 그려짐
+				preY = event.offsetY; //전 좌표값에서 선이 이동후 현재 좌표 선으로 이동
+				ctx.closePath();
+			}
+		}		
+
+		function funcColor(i){
+			ctx.strokeStyle = document.getElementsByName("pal")[i].getAttribute("value");
+		}
+	</script>
+</head>
+<body>
+<canvas id="can" width="350" height="300"></canvas>
+<div id="clr">
+	<div style="background-color: black;" name="pal" value="black"></div>
+	<div style="background-color: red;" name="pal" value="red"></div>
+	<div style="background-color: green;" name="pal" value="green"></div>
+	<div style="background-color: blue;" name="pal" value="blue"></div>
+</div>
+<form name="nnn">
+&nbsp;
+<select name="bold" id="bold">
+	<option value="">굵기</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+</select>
+<a href="#" id="clear">화면초기화</a>
+<a href="#" id="save">별도보관</a>
+<a href="#" id="eraser">지우개</a>
+<br>
+<span id="result"></span>
+</form>
+
+</body>
+</html>

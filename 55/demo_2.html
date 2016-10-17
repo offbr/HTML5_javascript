@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="dd.js"></script>
+	<script type="text/javascript">
+		function c1(){
+			document.write("c1실행");
+		}
+
+		function c2(s){
+			s();
+		}
+
+		function c3(){
+			return c1;
+		}
+
+		function c4(){
+			c1();
+			document.write("<br>-------");
+			c2(dan);
+			document.write("<br>-------");
+			ss = c3();
+			ss();
+			c5(dan, dan2);
+		}
+
+		function c5(a, b){
+			a();
+			b();
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+	c4();
+	</script>
+</body>
+</html>

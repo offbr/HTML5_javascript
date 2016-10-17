@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>media</title>
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body>
+미디어 연습 <p>
+<!--
+<audio src="sounds/moon.mp3" controls="controls">audio 지원안함</audio>
+-->
+<audio controls><!--autoplay-->
+	<source src="sounds/moon.mp3" type="audio/mpeg"> <!--예비순위 확장자-->
+	<source src="sounds/moon.ogg" type="audio/ogg">
+	<source src="sounds/moon.wav" type="audio/wav">
+</audio>
+<hr>
+<!--
+<video src="sounds/one.mp4" controls width="500" height="400">비디오 지원 안함</video>
+-->
+<video controls width="500" height="400">
+	<source src="sounds/one.mp4" type="video/mp4"> <!--브라우저에 따라 예비순위를 둠 -->
+	<source src="sounds/one.ogg" type="video/ogg">	
+</video>
+</body>
+</html>

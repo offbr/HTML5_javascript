@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>func</title>
+	<script type="text/javascript">
+		function f1(){
+			document.write("안녕?");
+			//return 5;
+		}
+
+		function f2(f){ // 인자로 *함수 전달
+			//f = f1 하면 f1함수에 대해 f라는 별명을 갖는다라고 보자.
+			f(); // f1()
+		}
+
+		function f3(){
+			//f1();
+			//return f1();
+			return f1; //함수를 반환
+		}
+
+		function hi(){
+			//f2(f1());
+			f2(f1);	 // 실인수로 함수 전달 가인수로 함수 받음//일급 함수 지원
+			document.write("<br>===========<br>");
+			sbs = f3();  // f3(f1) = sbs 함수 치환 / sbs(f1) 실행
+			sbs(); //f1()과 같은 결과를 갖는다
+			document.write("<br>===========<br>");	
+			f3(f1)(); //함수 리턴값을 실행
+
+		}
+	</script>
+</head>
+<body>
+일급 함수 지원<br>
+<script type="text/javascript">
+/*
+	kbs = hi; //함수를 치환
+	kbs(); //hi()와 동일한 수행 (같은 주소 값)
+	document.write("<br><br>");
+	//mbc = hi(); //일반값은 안되고 함수로 치환된다  
+	//mbc();
+*/
+	document.write("<hr>");
+	//hi; 의미없음
+	hi();
+</script>
+</body>
+</html>

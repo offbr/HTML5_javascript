@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>func</title>
+	<script type="text/javascript">
+		aa = 5;
+		
+		function func1(){
+			document.write("<br>난 func1이야");
+			//return;
+		}
+
+		function func2(a, b){
+			var c = a + b;
+			return c; // 반환값은 무조건 하나
+		}
+
+		function func3(){ //arguments는 인자가 선언되지 않은 경우 사용 가능
+			document.write("<br>arguments 갯수: " + arguments.length);//length =  배열의크기
+			document.write("<br>arguments 값: " + arguments[0] + " " +
+				arguments[1]);
+		}
+
+		function hap(){
+			var tot = 0; //지역변수 권장
+			for(var i = 0; i < arguments.length; i++){
+				tot += arguments[i]; 
+			}
+			return tot;
+		}
+
+		function evenOdd(num){
+			var result = "";;
+		
+			if(num % 2 === 0)
+				result = "짝";
+			else
+				result = "홀";
+
+			return result;
+		}
+
+	</script>
+</head>
+<body>
+함수 연습<br>
+<script type="text/javascript">
+	document.write(func1);
+	func1();
+	document.write("<br>다음 작업 계속");
+	my = func1; // 함수를 치환
+	document.write("<br>");
+	document.write(my);
+	my();
+
+	document.write("<hr>");
+	var re = func2(10, 20); // 수행 결과를 re가 기억
+	document.write("<br>re: " + re);
+	var a = func2(30, 40);
+	document.write("<br>a: " + a);
+	b = func2("금", "요일");
+	document.write("<br>b: " + b);
+	re = func2(1, 2 ,3);
+	document.write("<br>re: " + re);
+	re = func2();
+	document.write("<br>re: " + re);
+
+	document.write("<hr>");
+
+	func3();
+	func3(3, 4);
+	func3(3, 4, 5);
+	func3("대한", "민국");
+	func3(1, "으뜸");
+	
+	document.write("<hr>");
+
+	document.write("<br>" + hap(1, 2, 3));
+	document.write("<br>" + hap(1, 2, 3, 4));
+	document.write("<br>" + hap("안녕", "반가워"));
+
+	document.write("<hr>");
+	
+	document.write("<br>" + evenOdd(1));
+	var ss = evenOdd(2);
+	document.write("<br>" + ss);
+	
+
+</script>
+</body>
+</html>

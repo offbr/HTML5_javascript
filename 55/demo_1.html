@@ -1,0 +1,273 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	.p{
+		background-color: yellow
+	}
+	.s{
+		color: blue
+	}
+	</style>
+</head>
+<body>
+<script>
+	document.write("<table border= '1'>");
+	for(a = 2; a <= 9; a++){
+		document.write("<tr>");
+		for(i= 1; i <= 9; i++){
+			document.write("<td>");
+			document.write(a + "*" + i + "=" + a * i);			
+			document.write("</td>");	
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+
+document.write("<hr>");
+document.write("<hr>");
+
+	document.write("<table border= '1'>");
+	for(a = 2; a <= 9; a++){
+		if(a%2===0){
+		document.write("<tr class='p'>");
+	}else{
+		document.write("<tr class='s'>");
+	}
+
+		for(i= 1; i <= 9; i++){
+			document.write("<td>");
+			document.write(a + "*" + i + "=" + a * i);
+			document.write("</td>");
+		}document.write("</tr>");
+	}
+	document.write("</table>");
+
+document.write("<hr>");
+document.write("<hr>");
+
+	document.write("<table border= '1'>");
+	for(a = 1; a <= 9; a++){
+		document.write("<tr>");
+		for(i= 2; i <= 9; i++){
+			document.write("<td>");
+			document.write(i + "*" + a + "=" + i * a);
+			document.write("</td>");
+		}document.write("</tr>");
+	}
+	document.write("</table>");
+
+document.write("<hr>");
+document.write("<hr>");
+
+	var i = 0;
+	for(a = 1; a != 10; a++){
+		document.write( 2 + " * " + a + " = " + (2 * a)+"<br>");
+	}
+
+
+document.write("<hr>");
+document.write("<hr>");
+
+// var w = prompt("'구구단'원하는 단수를 입력하세요");
+	w = 2;
+	for(a = 1; a <= 9; a++){
+		document.write(w + "x"+ a + " = "+ w*a + "<br>");
+	}
+
+
+  var i = 0;
+	var sum = 0;
+	
+	while(i != 100){//조건식
+		i++; //증감식
+		sum += i; // sum = sum + i
+	}
+	
+	document.write('합계 : ' + sum);
+	document.write("<hr>");
+	var i = 0;
+	var hap = 0;
+	while(i <= 100){
+		document.write(i)
+		hap += i;
+		i++;
+
+	}
+	document.write("합계"+ hap);
+	document.write("<hr>");
+
+
+	var i = 0;
+	while(i != 9){
+		i++;
+	document.write(2 + " * " + i + "=" + 2 * i +"<br>");
+	}
+	document.write("<hr>");
+
+	var i = 1;
+	while(i != 9){
+		i++;
+		var j = 0;
+		while(j !=9 ){
+			j++;
+			document.write(i + " * " + j + " = " + i * j+ "<br>");
+		}
+	}
+document.write('<hr>');
+
+document.write("<table border = '1'>");
+var i = 1;
+while(i != 9){
+	i++;
+	if(i%2==0){
+		document.write("<tr class='p'>")
+		
+	}else{
+		document.write("<tr class='s'>")
+	} 
+	var j = 0;
+	while(j !=9 ){
+		j++;
+		document.write("<td>")
+		document.write(i + " * " + j + " = " + i * j + "<br>");
+		document.write("</td>")
+	}document.write("</tr>")
+}
+document.write("</table>");
+
+document.write('<hr>');
+
+document.write("<table border = '1'>");
+var i = 0;
+while(i != 9){
+	i++;
+		document.write("<tr>")
+	var j = 1;
+	while(j !=9 ){
+		j++;
+		document.write("<td class='s'>")
+		document.write(j + " * " + i + " = " + j * i + "<br>")
+		document.write("</td class='p'>")
+	}document.write("</tr>")
+}
+document.write("</table>");
+document.write('<hr>');
+document.write('<hr>');
+
+
+
+	// 문제3 : 1 ~ 1000 까지의 숫자 중 임의의 숫자 배수의 합을 출력
+	// 		   배수는 키보드로 부터 입력 for(초기;목적; 증가<- +a=?)
+	// 		   그런데 숫자의 합이 100 이상이면 정지한다.
+	// 		   정지시 해당 숫자 출력
+
+/*	var p = prompt("증가치를 입력하세요")
+	var total = 0;
+	for(a = 1; a <= 1000; a += Number(p)){
+		document.write(a + " ")
+		total += a;
+		if(total >= 100){
+			document.write("" + a);
+			break;
+		}
+
+	}
+	document.write("<br>");
+	document.write(total);
+
+document.write("<hr>");
+		total = 0;
+	var su = prompt("증가치를 입력하세요");
+		for(i = 1; i <= 1000; i += Number(su)){
+			document.write(i + " ");
+			total += i;
+			if(total >= 100){
+				document.write("<bt>" + i);
+				break;
+			}
+		}
+*/
+</script>
+	
+<script>
+document.write("<table border = '1'>");
+	document.write("<tr>");
+		for(i = 2; i <= 9; i++){
+			if(i%2==0){
+				document.write("<td class = 's'>");
+				}else{
+					document.write("<td class = 'p'>");
+				}		 
+			for(a = 1; a <=9; a++){
+				document.write(i + " * " + a + " = " + a * i+"<br>");
+			}
+			document.write("</td>");
+		}
+	document.write("</tr>");
+document.write("</table>");
+</script>
+<hr>
+
+<script>
+
+document.write("<table border = '1'>");
+	document.write("<tr>");
+		for(i = 2; i <= 9; i++){
+			if(i%2==0){
+				document.write("<td class = 's'>");
+				}else{
+					document.write("<td class = 'p'>");
+				}		 
+			for(a = 1; a <=9; a++){
+				document.write(i + " * " + a + " = " + a * i+"<br>");
+			}
+			document.write("</td>");
+		}
+	document.write("</tr>");
+document.write("</table>");
+</script>
+<hr>
+<script type="text/javascript">
+	document.write("<table border = '1'>");
+	for ( var i = 1; i <= 9; i++) {
+		document.write("<tr>");
+		for ( var j = 2; j <= 9; j++) {
+			document.write("<td>"+ j + " * " + i + " = " + i * j + "</td>");
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+</script>
+<hr>
+<script type="text/javascript">
+	document.write("<table border = '1'>");
+	for(a = 2; a <= 9; a++){
+		document.write("<tr>");
+		for(i = 1; i <= 9; i++){
+			document.write("<td>"+ a + " * " + i + " = " + a * i + "</td>");
+		}
+	}document.write("</tr>");
+	document.write("</table>");
+</script>
+
+<hr>
+<script type="text/javascript">
+	document.write("<table border = '1'>");
+	for(a = 1; a <= 9; a++){
+		document.write("<tr>");
+		for(i = 2; i <= 9; i++){
+			if(i%2==0){
+			document.write("<td class= 's'>"+ i + " * " + a + " = " + (i * a) + "</td>");	
+			}else{
+			document.write("<td class= 'p'>"+ i + " * " + a + " = " + (i * a) + "</td>");
+			}
+		}
+	}document.write("</tr>");
+	document.write("</table>");
+</script>
+
+	
+</body>
+</html>

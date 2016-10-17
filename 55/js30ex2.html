@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>event Q</title>
+	<style type="text/css">
+	#man{
+		font-size: 30px;
+		position: absolute;
+		left: 0px;
+		top: 100px;
+	}
+	</style>
+	<script type="text/javascript">
+	var saram = new Array("image/saram1.png",
+		"image/saram2.png","image/saram3.png",
+		"image/saram4.png","image/saram5.png",
+		"image/saram6.png","image/saram7.png",
+		"image/saram8.png","image/saram9.png",
+		"image/saram10.png");
+	var count = 0;
+	var point = 0;
+	var mv = 1;    //이미지 순서
+	var man = "";
+
+	window.onload = function(){
+		man = document.getElementById("man");
+
+		document.getElementById("btn1").onclick = move;
+
+		document.getElementById("btn2").onclick = function() {
+			clearTimeout(gogo);
+		}
+	}
+
+	function move(){
+		document.meP.src = saram[mv];
+		mv++;
+		count++;
+
+		if(count <= 10) {
+			point += 10;
+			if(mv == 4)	mv = 0;
+
+			if(point == 100) {
+				mv = 6;
+			}
+		} else {
+			point -= 10;
+			if(mv == 8) mv = 5;
+
+			if(point == 0) {
+				mv = 0;
+				count = 0;
+			}
+		}
+		man.style.left = point + "px";
+		gogo = setTimeout("move()", 500);
+	}
+</script>
+</head>
+<body>
+버튼을 누르면 출발하여 왕복하고, 다시 누르면 멈추는 이미지
+<p>
+<input type="button" value="시작" id="btn1"></input>
+<input type="button" value="정지" id="btn2"></input>
+<p/>
+<span id="man"><img src="image/saram1.png" name="meP"></span>
+</body>
+</html>

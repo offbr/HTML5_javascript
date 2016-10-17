@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>form</title>
+	<script type="text/javascript">
+		window.onload = function(){  // 입력자료 검사 및 정규표현식 !! 중요 !!
+			document.getElementById("btnSend").onclick = chkData;
+			document.getElementById("btnClear").onclick = clsData;
+		}
+
+		function chkData(){
+			//alert("aa");
+			if(frm.name.value === "" || isNaN(frm.name.value) == false){
+				alert("이름을 입력하시오");
+				frm.name.focus();
+				return;
+			}
+
+			if(frm.id.value.length < 3){ // 길이는 length
+				alert("아이디는 3자 이상 입력하시오");
+				frm.id.focus();
+				return;
+			}
+
+			//정규 표현식으로 이메일 검사 abc@kbs.com
+			var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+
+			//한글 가-힣 // 첫번째글자 "가" 마지막글자 "힣"
+			if (!frm.email.value.match(regExp) ) {
+			    alert("이메일을 정확히 입력하시오")
+				frm.email.focus();
+				return;
+			}
+
+			var regAge = /^[0-9]{1,2}$/; // ^ < 첫번째 [0-9]숫자 {1,2} 숫자가 한번 또는 두번 $ 끝 
+	//	//	//정규표현식(!!!) 중요
+			if(!frm.age.value.match(regAge)){ // 길이는 length
+				alert("나이는 숫자로 2자 허용");
+				frm.age.focus();
+				return;
+			}
+			frm.action="form.jsp";
+			frm.method="get"; //post
+			frm.submit(); //html 은 자료를 받을 수 없음 클라이언트 사이드 프로그램
+			
+		}
+
+		function clsData(){
+			//alert("bb");
+		}
+	</script>
+</head>
+<body>
+** 입력 양식 **<p>
+<!--
+<form action="form.jsp" name="frm" method="get">
+-->
+ <form name="frm"><!--입력자료 검사 (중요)-->
+	이 름 : <input type="text" name="name" /><br>
+	아이디 : <input type="text" name="id" placeholder="3자 이상" /><br>
+	이메일 : <input type="email" name="email" /><br>
+	나 이 : <input type="text" name="age" maxlength="2" /><p>
+	<input type="button" id="btnSend" value="자료 전송" /> <!--submit 서버로 전송-->
+	<input type="reset" id="btnClear" value="내용 삭제" /> <!--자바스크립트기능 -->
+</form>
+</body>
+</html>

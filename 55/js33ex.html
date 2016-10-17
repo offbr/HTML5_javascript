@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById("on").onclick = hapEnd;
+			document.getElementById("reset").onclick = function(){	
+			document.getElementById("show").innerText = "";
+			}			
+		} 
+/*		
+		function hapEnd(){
+			//alert("aa");
+			var hap = 0;
+			var a = Number(nnn.su1.value);
+			var b = Number(nnn.su2.value);
+			if(nnn.m.value == "+"){
+				hap = a + b;
+			}
+			if(nnn.m.value == "-"){
+				hap = a - b;
+			}
+			if(nnn.m.value == "*"){
+				hap = a * b;
+			}
+			if(nnn.m.value == "/"){
+				hap = a / b;
+			}
+			document.getElementById("show").innerText = hap						
+		}
+*/
+		function hapEnd(){
+			var hap = 0;
+			var a = nnn.su1.value;
+			var b = nnn.su2.value;
+			var op = nnn.m.value;
+			var resu = /^[0-9+]*$/;
+			if(!nnn.su1.value.match(resu) || nnn.su1.value ===""){
+				alert("숫자를 정확하게 입력하세요")
+				nnn.su1.focus();
+				return;
+			}
+			if (!nnn.su2.value.match(resu) || nnn.su2.value ===""){
+				alert("숫자를 정확하게 입력하세요")
+				nnn.su2.focus();
+				return;
+			}
+
+			if(nnn.su2.value == "0"){
+				alert("0으로 나눌수 없습니다. \n다시 입력하세요"
+					)
+				nnn.su2.focus();
+				return;
+			}
+
+			//alert("aa");
+			hap = eval(a + op + b);		
+			document.getElementById("show").innerText = hap;
+		}
+
+	</script>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td style="text-align: center;">미니계산기</td>
+		</tr>
+		<tr>
+			<td>
+				<form name="nnn">
+				숫자1 : <input type="text" name="su1" /><br>
+				숫자2 : <input type="text" name="su2" /><br>
+				연산선택 : 
+				<input type="radio" name="m" value="+"  checked="true" />+
+				<input type="radio" name="m" value="-"  />-
+				<input type="radio" name="m" value="*"  />*
+				<input type="radio" name="m" value="/"  />/
+				<br>결과 :<div id="show"></div>
+			</td>
+		</tr>
+		<tr>			
+			<td style="text-align: center;">
+				<input type="button" value="계산" id="on" />
+				<input type="reset" value="초기화" id="reset" />
+				<!--<input type="button" value="  종료  " name="exit"/>-->
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

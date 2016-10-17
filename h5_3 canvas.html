@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById("good").onmousemove = function(){
+				console.log(event.clientX + " " + event.clientY); //페이지텍스트 기준
+			}
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+
+			context.lineWidth = 5;
+			context.strokeStyle = "white";
+
+			context.beginPath(); //열기
+			
+			context.moveTo(0, 0); //시작 x좌표 y좌표 픽셀단위
+			context.lineTo(200, 0);
+			context.lineTo(200, 100);
+			context.lineTo(0, 100);
+			context.lineTo(0, 0);
+			
+			context.moveTo(0, 0); //시작 x좌표 y좌표 픽셀단위
+			context.lineTo(100, 0);
+			context.lineTo(100, 200);
+			context.lineTo(0, 200);
+			context.lineTo(0, 0);
+			
+
+			context.moveTo(200, 100); //시작 x좌표 y좌표 픽셀단위
+			context.lineTo(300, 100);
+			context.lineTo(300, 200);
+			context.lineTo(200, 200);
+			context.lineTo(200, 100);
+
+			context.arc(95,50,40,0,2*Math.PI);
+
+			context.stroke();
+			context.closePath(); //닫기
+
+
+			var canvas2 = document.getElementById("nice");
+			var context2 = canvas2.getContext("2d");
+			context2.strokeRect(10, 10, 200, 100);
+			// x좌표, y좌표,너비width, 높이height
+
+
+			var canvas3 = document.getElementById("good");
+			var context3 = canvas3.getContext("2d");
+			
+			//context3.strokeRect(10, 10, 200, 100);
+			
+			context3.lineWidth = 1;
+			context3.strokeStyle = "white";
+			
+			context3.beginPath(); //열기
+			
+			context3.moveTo(120, 60); //시작 x좌표 y좌표 픽셀단위
+			context3.lineTo(120, 150);
+			context3.lineTo(140, 150);
+			context3.lineTo(140, 60);
+			context3.lineTo(120, 60);
+			
+			context3.moveTo(140, 100);
+			context3.lineTo(180, 100);
+			context3.lineTo(180, 150);
+			context3.lineTo(170, 150);
+			context3.lineTo(170, 110);
+			context3.lineTo(140, 110);
+
+			context3.stroke();
+			context3.closePath(); //닫기
+		}
+	</script>
+</head>
+<body>
+캔버스 연습<p>
+<canvas id="myCanvas" width="350" height="200" style="background-color:green">지원 안함</canvas>
+<br><br>
+<canvas id="nice" width="350" height="200" style="background-color:cyan">지원 안함</canvas>
+<br><br>
+<canvas id="good" width="350" height="200" style="background-color:orange">지원 안함</canvas>
+
+</body>
+</html>

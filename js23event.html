@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>이벤트</title>
+	<style type="text/css">
+	td {
+		text-align: center;
+	}
+	</style>
+	<script type="text/javascript">
+		var myPic = new Array("../image/pic1.png", "../image/pic2.png", "../image/pic3.png");
+		var thisPic = 0;
+
+		function processPrev(){ //이전
+			//console.log(document.myPicture.src);
+			//console.log(myPic[thisPic]);
+			if(thisPic > 0){
+			thisPic--;
+			document.myPicture.src = myPic[thisPic]
+			}
+			
+		}
+
+		function processNext(){ //다음
+			//console.log(document.myPicture.src);
+			//console.log(myPic[thisPic]);
+			if(thisPic < myPic.length - 1){
+			thisPic++;
+			document.myPicture.src = myPic[thisPic]
+			}
+		}
+	</script>
+</head>
+<body>
+<p>이벤트 연습</p>
+<table border="1">
+	<tr>
+		<td width="200" height="200">
+		<img src="../image/pic1.png" name="myPicture" width="100%">
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<a href="javascript:processPrev()"><button>이전</button></a>
+		<a href="javascript:processNext()"><button>다음</button></a>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

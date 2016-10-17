@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html id="body">
+<head>
+	<meta charset="utf-8">
+	<title>event</title>
+	<style type="text/css">
+		body {font-size: 30px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById("body").onmousemove = function(){
+				//console.log(event.pageX + " " + event.pageY); 페이지텍스트 기준
+				//console.log(event.clientX + " " + event.clientY); 브라우저 기준
+				a.style.top = event.pageY * 1.05 + "px";
+				b.style.top = event.pageY * 1.08 + "px";
+				c.style.top = event.pageY * 1.20 + "px";
+				d.style.top = event.pageY * 1.08 + "px";
+				e.style.top = event.pageY * 1.05 + "px";
+				
+				a.style.left = 150 + (event.pageX - 350) * 0.03 + "px";
+				b.style.left = 250 + (event.pageX - 350) * 0.08 + "px";
+				c.style.left = 350 + (event.pageX - 350) * 0.20 + "px";
+				d.style.left = 450 + (event.pageX - 350) * 0.08 + "px";
+				e.style.left = 550 + (event.pageX - 350) * 0.03 + "px";
+
+
+			}
+		}
+
+		function move(){
+
+		}
+	</script>
+</head>
+<body>
+<div id="a" style="position: absolute; left: 150; top: 10; color: black">안</div>
+<div id="b" style="position: absolute; left: 250; top: 10; color: silver">녕</div>
+<div id="c" style="position: absolute; left: 350; top: 10; color: blue">하</div>
+<div id="d" style="position: absolute; left: 450; top: 10; color: red">세</div>
+<div id="e" style="position: absolute; left: 550; top: 10; color: green">요</div>
+
+</body>
+</html>

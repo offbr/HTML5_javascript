@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>while</title>
+</head>
+<body>
+while loop<br>
+<script type="text/javascript">
+	var a = 1; //초기값
+	while(a <= 5){
+		document.write("반복처리");
+		a++; // 반복문을 벗어날 수 있는 문장 필요
+	}
+	document.write("<br>반복문 처리 후 a:" + a);
+
+	document.write("<br>");
+	// 1 ~ 100 사이의 정수의 합 출력
+	var i = 1, tot = 0;
+	while(i <= 100){
+		//document.write(i + " ");
+		tot += i;
+		i++;		
+	}
+	document.write("합은 " + tot);
+document.write("<br>")
+	//문) 1~ 100 사이의 짝수의 합, 홀수의 합 출력
+	var i = 1, t1 = 0; t2 =0;
+	while(i <= 100){
+		if(i % 2 == 0){
+		t1+=i
+		i++;
+		}else{
+			t2+=i
+			i++;
+		}
+	}document.write("<br>"+t1+"<br>"+t2)
+
+document.write("<br>")
+	var i = 0, t1 = 0; t2 =0;
+	while(i < 100){
+		i++;
+		if(i % 2 ==0)
+		//document.write("<b>"+ i+"</b>");
+		t2 += i;
+	else
+		//document.write(i+" ");
+		t1 += i;
+	}
+	document.write("<br>짝수합:"+ t2 + "홀수합:" + t1);
+</script>
+<hr>
+외부의 자바스크립트 파일 읽기<br>
+<script type="text/javascript" src="../js/myjs.js">
+</script>
+<hr>
+<script type="text/javascript">
+	var b = 10;
+	do{
+		// while문은 두가지(do는 무조건 최소 1회는 수행)
+		document.write(b + " ");
+		b++;
+	}while(b <= 5)
+	document.write("<br>do ~ while 수행 후 b : " + b);
+
+	// 1 ~ 100 사이의 정수의 합 출력(do ~ while)
+	document.write("<br>");
+	var i = 0, tot = 0;
+	do{
+		i++;	
+		tot += i;	
+	}while(i < 100)
+	document.write("<br>합은 " + tot);
+
+</script>
+
+</body>
+</html>
